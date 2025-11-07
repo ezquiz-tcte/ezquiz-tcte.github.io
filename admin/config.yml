@@ -1,0 +1,77 @@
+backend:
+  name: git-gateway
+  branch: main # 你的 GitHub 分支名稱
+
+media_folder: "images/uploads" # 上傳的圖片儲存位置
+public_folder: "/images/uploads" # 公開訪問路徑
+
+# 本地開發模式（可選）
+# local_backend: true
+
+collections:
+  # Slider 輪播圖管理
+  - name: "slider"
+    label: "首頁輪播圖"
+    folder: "content/slides"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "標題", name: "title", widget: "string"}
+      - {label: "描述", name: "description", widget: "text"}
+      - {label: "圖片", name: "image", widget: "image"}
+      - {label: "按鈕文字", name: "buttonText", widget: "string"}
+      - {label: "按鈕連結", name: "buttonLink", widget: "string"}
+      - {label: "排序", name: "order", widget: "number", default: 0}
+      - {label: "發布", name: "published", widget: "boolean", default: true}
+
+  # 團隊成員管理
+  - name: "team"
+    label: "團隊成員"
+    folder: "content/team"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "姓名", name: "name", widget: "string"}
+      - {label: "職位", name: "role", widget: "string"}
+      - {label: "頭像", name: "image", widget: "image"}
+      - {label: "個人介紹", name: "description", widget: "text"}
+      - {label: "Email", name: "email", widget: "string", required: false}
+      - {label: "LinkedIn", name: "linkedin", widget: "string", required: false}
+      - {label: "排序", name: "order", widget: "number", default: 0}
+      - {label: "顯示", name: "published", widget: "boolean", default: true}
+
+  # 網站設定
+  - name: "settings"
+    label: "網站設定"
+    files:
+      - label: "網站資訊"
+        name: "site"
+        file: "content/settings/site.json"
+        fields:
+          - {label: "網站名稱", name: "title", widget: "string"}
+          - {label: "網站描述", name: "description", widget: "text"}
+          - {label: "Logo", name: "logo", widget: "image", required: false}
+          - {label: "Email", name: "email", widget: "string"}
+          - {label: "電話", name: "phone", widget: "string"}
+          - {label: "地址", name: "address", widget: "string"}
+          - label: "社交媒體"
+            name: "social"
+            widget: "object"
+            fields:
+              - {label: "Facebook", name: "facebook", widget: "string", required: false}
+              - {label: "Instagram", name: "instagram", widget: "string", required: false}
+              - {label: "Twitter", name: "twitter", widget: "string", required: false}
+              - {label: "LinkedIn", name: "linkedin", widget: "string", required: false}
+
+  # 特色功能
+  - name: "features"
+    label: "平台特色"
+    folder: "content/features"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "標題", name: "title", widget: "string"}
+      - {label: "描述", name: "description", widget: "text"}
+      - {label: "圖示 (Font Awesome class)", name: "icon", widget: "string", hint: "例如：fas fa-graduation-cap"}
+      - {label: "排序", name: "order", widget: "number", default: 0}
+      - {label: "顯示", name: "published", widget: "boolean", default: true}

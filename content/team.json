@@ -1,0 +1,36 @@
+{
+  "team": [
+    {
+      "name": "張小明",
+      "role": "創辦人 & CEO",
+      "image": "https://i.pravatar.cc/300?img=12",
+      "description": "教育科技專家，致力於改善學習體驗",
+      "email": "ming.chang@ezquiz.com",
+      "order": 1
+    },
+    {
+      "name": "李小華",
+      "role": "技術長 CTO",
+      "image": "https://i.pravatar.cc/300?img=47",
+      "description": "全端工程師，熱愛開發創新的學習工具",
+      "email": "hua.li@ezquiz.com",
+      "order": 2
+    },
+    {
+      "name": "王小美",
+      "role": "設計總監",
+      "image": "https://i.pravatar.cc/300?img=32",
+      "description": "UX/UI 設計師，專注於打造直覺的使用體驗",
+      "email": "mei.wang@ezquiz.com",
+      "order": 3
+    },
+    {
+      "name": "陳小強",
+      "role": "產品經理",
+      "image": "https://i.pravatar.cc/300?img=60",
+      "description": "擁有豐富的教育產品開發經驗",
+      "email": "qiang.chen@ezquiz.com",
+      "order": 4
+    }
+  ]
+}

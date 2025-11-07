@@ -1,0 +1,25 @@
+{
+  "slides": [
+    {
+      "title": "歡迎來到 EZQuiz 學習平台",
+      "description": "讓學習變得更簡單、更有趣、更有效",
+      "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1600",
+      "buttonText": "開始學習",
+      "buttonLink": "#features"
+    },
+    {
+      "title": "智能化學習體驗",
+      "description": "AI 驅動的個性化學習路徑",
+      "image": "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1600",
+      "buttonText": "了解更多",
+      "buttonLink": "#features"
+    },
+    {
+      "title": "與夥伴一起成長",
+      "description": "協作學習，共同進步",
+      "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1600",
+      "buttonText": "加入我們",
+      "buttonLink": "#team"
+    }
+  ]
+}

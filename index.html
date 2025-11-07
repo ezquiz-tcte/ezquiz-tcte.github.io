@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EZQuiz 學習平台 - 讓學習變得更簡單</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 導航欄 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>EZQuiz</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">首頁</a></li>
+                <li><a href="#features">特色</a></li>
+                <li><a href="#team">團隊</a></li>
+                <li><a href="#contact">聯絡我們</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Slider -->
+    <section id="home" class="hero-section">
+        <div class="slider-container">
+            <div class="slider" id="heroSlider">
+                <!-- Slides will be loaded from content/slider.json -->
+            </div>
+            <button class="slider-btn prev" onclick="changeSlide(-1)">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="slider-btn next" onclick="changeSlide(1)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="slider-dots" id="sliderDots"></div>
+        </div>
+    </section>
+
+    <!-- 特色功能 -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <h2 class="section-title">平台特色</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>智能學習</h3>
+                    <p>AI 驅動的個性化學習路徑，讓每個學生都能找到最適合自己的學習方式</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>進度追蹤</h3>
+                    <p>即時追蹤學習進度，清楚掌握每個知識點的掌握程度</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>協作學習</h3>
+                    <p>與同學一起學習，分享筆記，互相幫助，共同進步</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>隨時隨地</h3>
+                    <p>跨平台支援，無論手機、平板還是電腦，都能輕鬆學習</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 團隊介紹 -->
+    <section id="team" class="team-section">
+        <div class="container">
+            <h2 class="section-title">團隊成員</h2>
+            <div class="team-grid" id="teamGrid">
+                <!-- Team members will be loaded from content/team.json -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 聯絡我們 -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">聯絡我們</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>contact@ezquiz.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>電話</h3>
+                            <p>+886-2-1234-5678</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>地址</h3>
+                            <p>台北市信義區信義路五段7號</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="您的姓名" required>
+                    <input type="email" placeholder="您的 Email" required>
+                    <textarea placeholder="您的訊息" rows="5" required></textarea>
+                    <button type="submit" class="btn-primary">送出訊息</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>EZQuiz</h3>
+                    <p>讓學習變得更簡單，讓知識變得更有趣</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快速連結</h4>
+                    <ul>
+                        <li><a href="#home">首頁</a></li>
+                        <li><a href="#features">特色</a></li>
+                        <li><a href="#team">團隊</a></li>
+                        <li><a href="#contact">聯絡我們</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>追蹤我們</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EZQuiz. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
