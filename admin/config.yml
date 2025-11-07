@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: main # 你的 GitHub 分支名稱
+  branch: master # 你的 GitHub 分支名稱
 
 media_folder: "images/uploads" # 上傳的圖片儲存位置
 public_folder: "/images/uploads" # 公開訪問路徑
