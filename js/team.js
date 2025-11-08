@@ -31,78 +31,84 @@ async function loadAllTeamMembers() {
         // 使用預設團隊資料
         allTeamMembers = [
             {
-                name: '張小明',
-                role: '創辦人 & CEO',
-                category: 'leader',
-                image: 'https://i.pravatar.cc/300?img=12',
-                description: '教育科技專家，致力於改善學習體驗',
-                email: 'ming.chang@ezquiz.com'
+                name: '可樂貓',
+                role: '創辦人 & 安卓開發',
+                category: ['leader', 'app-dev'],
+                image: 'images/headshot/shen.jpg',
+                description: '大學畢業後創立 EZQuiz 社群與 App，持續投入平台的維護與改進。',
+                instagram: '',
+                order: 1,
+                featured: true
             },
             {
-                name: '李小華',
-                role: '技術長 CTO',
-                category: 'leader',
-                image: 'https://i.pravatar.cc/300?img=47',
-                description: '全端工程師，熱愛開發創新的學習工具',
-                email: 'hua.li@ezquiz.com'
+                name: '咕嚕',
+                role: 'iOS 開發',
+                category: 'app-dev',
+                image: 'images/headshot/glue.jpg',
+                description: '負責 iOS 開發與新功能構思，並主導實作與優化。目前就讀台科電機',
+                instagram: '',
+                order: 2,
+                featured: true
             },
             {
-                name: '王小美',
-                role: '設計總監',
-                category: 'design',
-                image: 'https://i.pravatar.cc/300?img=32',
-                description: 'UX/UI 設計師，專注於打造直覺的使用體驗',
-                email: 'mei.wang@ezquiz.com'
+                name: '青蛙',
+                role: '讀書會主持 & 社群小編',
+                category: ['community', 'host'],
+                image: 'images/headshot/frog.jpg',
+                description: '擔任 115 讀書會主持，並負責倒數與國文題目限動，以可愛風格呈現淺顯易懂的解析',
+                instagram: '',
+                order: 3,
+                featured: true
             },
             {
-                name: '陳小強',
-                role: '產品經理',
-                category: 'leader',
-                image: 'https://i.pravatar.cc/300?img=60',
-                description: '擁有豐富的教育產品開發經驗',
-                email: 'qiang.chen@ezquiz.com'
+                name: '松鼠',
+                role: '網頁設計 & 前讀書會主持',
+                category: ['design', 'host'],
+                image: 'images/headshot/squirrel.jpg',
+                description: '目前協助設計網頁UI，曾擔任 114 讀書會主持，幽默風趣又溫暖',
+                instagram: 'monkeyeeeeeeeeeee',
+                order: 4,
+                featured: true
             },
             {
-                name: '林志明',
-                role: '前端工程師',
-                category: 'developer',
-                image: 'https://i.pravatar.cc/300?img=13',
-                description: '專精於 React 和 Vue.js 開發'
+                name: '芋頭',
+                role: '社群小編',
+                category: 'community',
+                image: 'images/headshot/taro.jpg',
+                description: '負責統測倒數限動，以溫暖短句鼓舞人心',
+                instagram: '',
+                order: 5,
+                featured: true
             },
             {
-                name: '黃雅芳',
-                role: '後端工程師',
-                category: 'developer',
-                image: 'https://i.pravatar.cc/300?img=44',
-                description: '擅長 Node.js 和資料庫設計'
+                name: '抹茶',
+                role: '社群小編',
+                category: ['community', 'design'],
+                image: 'images/headshot/matcha.jpg',
+                description: '負責倒數與問答限動，設計風格可愛又溫暖，擔任讀書會副主持',
+                instagram: '',
+                order: 6,
+                featured: true
             },
             {
-                name: '劉建國',
-                role: 'UI 設計師',
-                category: 'design',
-                image: 'https://i.pravatar.cc/300?img=15',
-                description: '創造美觀且實用的使用者介面'
+                name: '奶昔',
+                role: '貼文企劃',
+                category: 'community',
+                image: 'images/headshot/milkshake.jpg',
+                description: '協助發想貼文內容，涵蓋讀書心態與升學制度，就讀北科工設',
+                instagram: '',
+                order: 7,
+                featured: true
             },
             {
-                name: '周美玲',
-                role: '內容編輯',
-                category: 'content',
-                image: 'https://i.pravatar.cc/300?img=48',
-                description: '負責教材編寫與課程規劃'
-            },
-            {
-                name: '吳俊傑',
-                role: '行銷經理',
-                category: 'marketing',
-                image: 'https://i.pravatar.cc/300?img=33',
-                description: '擴大平台影響力與用戶成長'
-            },
-            {
-                name: '鄭雅婷',
-                role: '客戶服務',
-                category: 'marketing',
-                image: 'https://i.pravatar.cc/300?img=25',
-                description: '提供優質的用戶支援服務'
+                name: '虹魚',
+                role: '社群小編',
+                category: 'community',
+                image: 'images/headshot/stingray.jpg',
+                description: '自創立以來擔任小編至今，精心製作英文測驗並創立化工讀書帳',
+                instagram: '114study',
+                order: 8,
+                featured: true
             }
         ];
         displayAllTeam(allTeamMembers);
@@ -123,8 +129,9 @@ function displayAllTeam(teamMembers) {
     teamMembers.forEach(member => {
         const memberDiv = document.createElement('div');
         memberDiv.className = 'team-member';
+        const imageUrl = member.image || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(member.name) + '&size=300&background=667eea&color=fff';
         memberDiv.innerHTML = `
-            <img src="${member.image}" alt="${member.name}">
+            <img src="${imageUrl}" alt="${member.name}" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&size=300&background=667eea&color=fff'">
             <h3>${member.name}</h3>
             <div class="role">${member.role}</div>
             <p>${member.description}</p>
@@ -152,15 +159,23 @@ if (roleFilter) {
 
 function filterTeam() {
     const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
-    const selectedRole = roleFilter ? roleFilter.value : 'all';
+    const selectedRole = roleFilter ? roleFilter.value : 'current';
     
     let filteredMembers = allTeamMembers;
     
     // 依角色篩選
-    if (selectedRole !== 'all') {
-        filteredMembers = filteredMembers.filter(member => 
-            member.category === selectedRole
-        );
+    if (selectedRole === 'current') {
+        // 現任成員：排除 alumni
+        filteredMembers = filteredMembers.filter(member => {
+            const categories = Array.isArray(member.category) ? member.category : [member.category];
+            return !categories.includes('alumni');
+        });
+    } else if (selectedRole !== 'all') {
+        // 其他類別：支援多個 category
+        filteredMembers = filteredMembers.filter(member => {
+            const categories = Array.isArray(member.category) ? member.category : [member.category];
+            return categories.includes(selectedRole);
+        });
     }
     
     // 依搜尋關鍵字篩選
@@ -178,4 +193,8 @@ function filterTeam() {
 // 頁面載入時初始化
 document.addEventListener('DOMContentLoaded', () => {
     loadAllTeamMembers();
+    // 頁面載入後自動觸發篩選，顯示現任成員
+    setTimeout(() => {
+        filterTeam();
+    }, 100);
 });

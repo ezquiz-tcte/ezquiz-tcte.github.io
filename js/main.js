@@ -31,25 +31,32 @@ async function loadSliderData() {
         // 使用預設 slides
         slides = [
             {
-                image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1600',
-                title: '歡迎來到 EZQuiz 學習平台',
-                description: '讓學習變得更簡單、更有趣、更有效',
-                buttonText: '開始學習',
-                buttonLink: '#features'
+                "title": "EZQuiz APP",
+                "description": "在手機上學習、隨時練習。支援 iOS / Android",
+                "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1600",
+                "buttonText": "前往 APP 介紹",
+                "buttonLink": "#app"
             },
             {
-                image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1600',
-                title: '智能化學習體驗',
-                description: 'AI 驅動的個性化學習路徑',
-                buttonText: '了解更多',
-                buttonLink: '#features'
+                "title": "Discord 每週共讀",
+                "description": "相互陪伴、解題討論與輕鬆交流。",
+                "image": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=1600",
+                "buttonText": "加入 Discord",
+                "buttonLink": "https://discord.com/invite/ag7NzXTNBA"
             },
             {
-                image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1600',
-                title: '與夥伴一起成長',
-                description: '協作學習，共同進步',
-                buttonText: '加入我們',
-                buttonLink: '#team'
+                "title": "IG 每日限動 & 精選貼文",
+                "description": "分享學習、統測與 APP 相關內容",
+                "image": "https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=1600",
+                "buttonText": "追蹤我們",
+                "buttonLink": "https://www.instagram.com/ezquiz.tcte/"
+            },
+            {
+                "title": "加入我們的團隊",
+                "description": "若你想一起打造更好的學習平台，歡迎加入 EZQuiz 團隊！",
+                "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1600",
+                "buttonText": "查看團隊",
+                "buttonLink": "#team"
             }
         ];
         initializeSlider();
@@ -124,69 +131,154 @@ function resetAutoSlide() {
 }
 
 // 載入團隊資料（首頁精選）
+let currentTeamSlide = 0;
+let allFeaturedMembers = [];
+
 async function loadTeamData() {
     try {
         const response = await fetch('content/team.json');
         const data = await response.json();
-        // 只顯示前 4 位標記為 featured 的成員
-        const featuredMembers = data.team
-            .filter(member => member.featured)
-            .slice(0, 4);
-        displayTeamPreview(featuredMembers.length > 0 ? featuredMembers : data.team.slice(0, 4));
+        // 顯示所有 featured 成員
+        allFeaturedMembers = data.team.filter(member => member.featured);
+        displayTeamCarousel(allFeaturedMembers.length > 0 ? allFeaturedMembers : data.team.slice(0, 8));
     } catch (error) {
         console.error('Error loading team data:', error);
         // 使用預設團隊資料
         const defaultTeam = [
             {
-                name: '張小明',
-                role: '創辦人 & CEO',
-                image: 'https://i.pravatar.cc/300?img=12',
-                description: '教育科技專家，致力於改善學習體驗',
+                name: '可樂貓',
+                role: '創辦人 & 安卓開發',
+                image: 'images/headshot/shen.jpg',
+                description: '大學畢業後創立 EZQuiz 社群與 App，持續投入平台的維護與改進。',
                 featured: true
             },
             {
-                name: '李小華',
-                role: '技術長 CTO',
-                image: 'https://i.pravatar.cc/300?img=47',
-                description: '全端工程師，熱愛開發創新的學習工具',
+                name: '咕嚕',
+                role: 'iOS 開發',
+                image: 'images/headshot/glue.jpg',
+                description: '負責 iOS 開發與新功能構思，並主導實作與優化。目前就讀台科電機',
                 featured: true
             },
             {
-                name: '王小美',
-                role: '設計總監',
-                image: 'https://i.pravatar.cc/300?img=32',
-                description: 'UX/UI 設計師，專注於打造直覺的使用體驗',
+                name: '青蛙',
+                role: '讀書會主持 & 社群小編',
+                image: 'images/headshot/frog.jpg',
+                description: '擔任 115 讀書會主持，並負責倒數與國文題目限動，以可愛風格呈現淺顯易懂的解析',
                 featured: true
             },
             {
-                name: '陳小強',
-                role: '產品經理',
-                image: 'https://i.pravatar.cc/300?img=60',
-                description: '擁有豐富的教育產品開發經驗',
+                name: '松鼠',
+                role: '網頁設計 & 前讀書會主持',
+                image: 'images/headshot/squirrel.jpg',
+                description: '目前協助設計網頁UI，曾擔任 114 讀書會主持，幽默風趣又溫暖',
+                featured: true
+            },
+            {
+                name: '芋頭',
+                role: '社群小編',
+                image: 'images/headshot/taro.jpg',
+                description: '負責統測倒數限動，以溫暖短句鼓舞人心',
+                featured: true
+            },
+            {
+                name: '抹茶',
+                role: '社群小編',
+                image: 'images/headshot/matcha.jpg',
+                description: '負責倒數與問答限動，設計風格可愛又溫暖，擔任讀書會副主持',
+                featured: true
+            },
+            {
+                name: '奶昔',
+                role: '貼文企劃',
+                image: 'images/headshot/milkshake.jpg',
+                description: '協助發想貼文內容，涵蓋讀書心態與升學制度，就讀北科工設',
+                featured: true
+            },
+            {
+                name: '虹魚',
+                role: '社群小編',
+                image: 'images/headshot/stingray.jpg',
+                description: '自創立以來擔任小編至今，精心製作英文測驗並創立化工讀書帳',
                 featured: true
             }
         ];
-        displayTeamPreview(defaultTeam);
+        allFeaturedMembers = defaultTeam;
+        displayTeamCarousel(defaultTeam);
     }
 }
 
-function displayTeamPreview(teamMembers) {
-    const teamGrid = document.getElementById('teamPreviewGrid');
-    if (!teamGrid) return;
+function displayTeamCarousel(teamMembers) {
+    const teamCarousel = document.getElementById('teamCarousel');
+    if (!teamCarousel) return;
     
-    teamGrid.innerHTML = '';
+    teamCarousel.innerHTML = '';
     
     teamMembers.forEach(member => {
         const memberDiv = document.createElement('div');
-        memberDiv.className = 'team-member';
+        memberDiv.className = 'team-member-slide';
+        const imageUrl = member.image || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(member.name) + '&size=300&background=667eea&color=fff';
         memberDiv.innerHTML = `
-            <img src="${member.image}" alt="${member.name}">
+            <img src="${imageUrl}" alt="${member.name}" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&size=300&background=667eea&color=fff'">
             <h3>${member.name}</h3>
             <div class="role">${member.role}</div>
             <p>${member.description}</p>
         `;
-        teamGrid.appendChild(memberDiv);
+        teamCarousel.appendChild(memberDiv);
     });
+    
+    updateTeamCarousel();
+}
+
+function changeTeamSlide(direction) {
+    const visibleSlides = getVisibleSlides();
+    const maxSlide = Math.max(0, allFeaturedMembers.length - visibleSlides);
+    
+    currentTeamSlide += direction;
+    if (currentTeamSlide > maxSlide) currentTeamSlide = maxSlide;
+    if (currentTeamSlide < 0) currentTeamSlide = 0;
+    
+    updateTeamCarousel();
+}
+
+function getVisibleSlides() {
+    const width = window.innerWidth;
+    if (width >= 1200) return 4;
+    if (width >= 768) return 3;
+    if (width >= 480) return 2;
+    return 1;
+}
+
+function updateTeamCarousel() {
+    const teamCarousel = document.getElementById('teamCarousel');
+    const prevBtn = document.getElementById('teamPrevBtn');
+    const nextBtn = document.getElementById('teamNextBtn');
+    
+    if (!teamCarousel) return;
+    
+    const visibleSlides = getVisibleSlides();
+    const slideWidth = 100 / visibleSlides;
+    const offset = -(currentTeamSlide * slideWidth);
+    
+    teamCarousel.style.transform = `translateX(${offset}%)`;
+    
+    // 更新按鈕狀態
+    if (prevBtn) prevBtn.disabled = currentTeamSlide === 0;
+    if (nextBtn) nextBtn.disabled = currentTeamSlide >= allFeaturedMembers.length - visibleSlides;
+}
+
+// 監聽視窗大小變化
+window.addEventListener('resize', () => {
+    const visibleSlides = getVisibleSlides();
+    const maxSlide = Math.max(0, allFeaturedMembers.length - visibleSlides);
+    if (currentTeamSlide > maxSlide) {
+        currentTeamSlide = maxSlide;
+    }
+    updateTeamCarousel();
+});
+
+function displayTeamPreview(teamMembers) {
+    // 保留舊函數以防其他地方使用
+    displayTeamCarousel(teamMembers);
 }
 
 // 表單提交
@@ -210,31 +302,12 @@ async function loadStudyGroups() {
         // 使用預設資料
         const defaultGroups = [
             {
-                title: '程式設計讀書會',
-                date: '2025-11-15',
-                time: '19:00 - 21:00',
-                location: '線上會議',
-                participants: 15,
-                image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600',
-                description: '一起學習 Python 程式設計，從基礎到進階'
-            },
-            {
-                title: '英文學習小組',
-                date: '2025-11-18',
-                time: '18:30 - 20:30',
-                location: '台北市大安區',
-                participants: 8,
-                image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600',
-                description: '透過討論和對話練習，提升英文口說能力'
-            },
-            {
-                title: '數學解題工作坊',
-                date: '2025-11-20',
-                time: '14:00 - 17:00',
-                location: '線上會議',
-                participants: 20,
-                image: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?w=600',
-                description: '針對高中數學難題進行深入討論與解析'
+                "title": "每週共讀活動",
+                "date": "每週六",
+                "time": "19:00 - 21:00",
+                "location": "Discord 線上社群",
+                "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600",
+                "description": "主持人陪伴大家一起學習，溫暖互助的學習氛圍。隨時提出問題、解題討論，還可以小聊放鬆，讓學習不孤單"
             }
         ];
         displayStudyGroups(defaultGroups);
@@ -261,7 +334,6 @@ function displayStudyGroups(groups) {
                 <p class="study-group-description">${group.description}</p>
                 <div class="study-group-meta">
                     <span><i class="fas fa-map-marker-alt"></i> ${group.location}</span>
-                    <span><i class="fas fa-users"></i> ${group.participants} 人</span>
                 </div>
             </div>
         `;
