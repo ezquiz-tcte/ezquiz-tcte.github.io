@@ -269,82 +269,6 @@ function displayStudyGroups(groups) {
     });
 }
 
-// 載入 Instagram 貼文
-async function loadInstagramPosts() {
-    try {
-        const response = await fetch('content/instagram.json');
-        const data = await response.json();
-        displayInstagramPosts(data.posts.slice(0, 6)); // 顯示前 6 篇
-    } catch (error) {
-        console.error('Error loading Instagram posts:', error);
-        // 使用預設資料
-        const defaultPosts = [
-            {
-                image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400',
-                likes: 234,
-                comments: 12,
-                link: '#'
-            },
-            {
-                image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400',
-                likes: 189,
-                comments: 8,
-                link: '#'
-            },
-            {
-                image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400',
-                likes: 312,
-                comments: 24,
-                link: '#'
-            },
-            {
-                image: 'https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=400',
-                likes: 267,
-                comments: 15,
-                link: '#'
-            },
-            {
-                image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400',
-                likes: 198,
-                comments: 9,
-                link: '#'
-            },
-            {
-                image: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=400',
-                likes: 345,
-                comments: 28,
-                link: '#'
-            }
-        ];
-        displayInstagramPosts(defaultPosts);
-    }
-}
-
-function displayInstagramPosts(posts) {
-    const instagramGrid = document.getElementById('instagramGrid');
-    if (!instagramGrid) return;
-    
-    instagramGrid.innerHTML = '';
-    
-    posts.forEach(post => {
-        const postDiv = document.createElement('div');
-        postDiv.className = 'instagram-post';
-        postDiv.innerHTML = `
-            <img src="${post.image}" alt="Instagram Post">
-            <div class="instagram-overlay">
-                <div class="instagram-stats">
-                    <span><i class="fas fa-heart"></i> ${post.likes}</span>
-                    <span><i class="fas fa-comment"></i> ${post.comments}</span>
-                </div>
-            </div>
-        `;
-        postDiv.addEventListener('click', () => {
-            window.open(post.link, '_blank');
-        });
-        instagramGrid.appendChild(postDiv);
-    });
-}
-
 // 平滑滾動
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -364,5 +288,4 @@ document.addEventListener('DOMContentLoaded', () => {
     loadSliderData();
     loadTeamData();
     loadStudyGroups();
-    loadInstagramPosts();
 });

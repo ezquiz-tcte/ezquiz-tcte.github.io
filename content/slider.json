@@ -1,24 +1,31 @@
 {
   "slides": [
     {
-      "title": "歡迎來到 EZQuiz 學習平台",
-      "description": "讓學習變得更簡單、更有趣、更有效",
-      "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1600",
-      "buttonText": "開始學習",
-      "buttonLink": "#features"
+      "title": "下載 EZQuiz APP",
+      "description": "在手機上學習、隨時練習與同步進度。支援 iOS / Android",
+      "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1600",
+      "buttonText": "下載 App",
+      "buttonLink": "https://apps.apple.com/us/app/ez-quiz/id6749570516"
     },
     {
-      "title": "智能化學習體驗",
-      "description": "AI 驅動的個性化學習路徑",
-      "image": "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1600",
-      "buttonText": "了解更多",
-      "buttonLink": "#features"
+      "title": "每週共讀（Discord）",
+      "description": "每週六 19:00-21:00 在 Discord 共讀：主持陪伴、隨時提問、解題討論與小聊",
+      "image": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=1600",
+      "buttonText": "加入 Discord",
+      "buttonLink": "https://discord.com/invite/ag7NzXTNBA"
     },
     {
-      "title": "與夥伴一起成長",
-      "description": "協作學習，共同進步",
-      "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1600",
-      "buttonText": "加入我們",
+      "title": "IG 每日限動 & 精選貼文",
+      "description": "每日限動包含統測倒數、問答互動、英文測驗；貼文分享學習、統測、專業與 APP 相關內容",
+      "image": "https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=1600",
+      "buttonText": "追蹤我們",
+      "buttonLink": "https://www.instagram.com/ezquiz.tcte/"
+    },
+    {
+      "title": "加入我們的團隊",
+      "description": "若你想一起打造更好的學習平台，歡迎加入 EZQuiz — 我們在找領導、社群小編、APP 開發與設計人才",
+      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1600",
+      "buttonText": "查看團隊",
       "buttonLink": "#team"
     }
   ]

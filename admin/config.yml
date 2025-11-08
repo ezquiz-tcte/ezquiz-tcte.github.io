@@ -2,15 +2,6 @@ backend:
   name: git-gateway
   branch: master # 你的 GitHub 分支名稱
 
-# 網站網址設定
-site_url: https://ezquiz-tcte.github.io
-# Netlify Identity 設定
-identity_url: https://ezquiz-tcte.netlify.app/.netlify/identity
-gateway_url: https://ezquiz-tcte.netlify.app/.netlify/git
-
-media_folder: "images/uploads" # 上傳的圖片儲存位置
-public_folder: "/images/uploads" # 公開訪問路徑
-
 # 本地開發模式（可選）
 # local_backend: true
 
@@ -29,22 +20,6 @@ collections:
       - {label: "按鈕連結", name: "buttonLink", widget: "string"}
       - {label: "排序", name: "order", widget: "number", default: 0}
       - {label: "發布", name: "published", widget: "boolean", default: true}
-
-  # 團隊成員管理
-  - name: "team"
-    label: "團隊成員"
-    folder: "content/team"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "姓名", name: "name", widget: "string"}
-      - {label: "職位", name: "role", widget: "string"}
-      - {label: "頭像", name: "image", widget: "image"}
-      - {label: "個人介紹", name: "description", widget: "text"}
-      - {label: "Email", name: "email", widget: "string", required: false}
-      - {label: "LinkedIn", name: "linkedin", widget: "string", required: false}
-      - {label: "排序", name: "order", widget: "number", default: 0}
-      - {label: "顯示", name: "published", widget: "boolean", default: true}
 
   # 網站設定
   - name: "settings"
@@ -79,10 +54,10 @@ collections:
             fields:
               - {label: "姓名", name: "name", widget: "string"}
               - {label: "職位", name: "role", widget: "string"}
-              - {label: "類別", name: "category", widget: "select", options: ["leader", "developer", "design", "marketing", "content"], default: "developer"}
+              - {label: "類別", name: "category", widget: "select", options: ["leader", "community", "app-dev", "design", "alumni"], default: "app-dev"}
               - {label: "照片", name: "image", widget: "image"}
               - {label: "簡介", name: "description", widget: "text"}
-              - {label: "Email", name: "email", widget: "string", required: false}
+              - {label: "Instagram", name: "instagram", widget: "string", required: false}
               - {label: "順序", name: "order", widget: "number", default: 1, value_type: "int"}
               - {label: "首頁重點推薦", name: "featured", widget: "boolean", default: false}
 

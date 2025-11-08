@@ -128,7 +128,7 @@ function displayAllTeam(teamMembers) {
             <h3>${member.name}</h3>
             <div class="role">${member.role}</div>
             <p>${member.description}</p>
-            ${member.email ? `<a href="mailto:${member.email}" style="color: var(--primary-color); text-decoration: none; font-size: 0.9rem;"><i class="fas fa-envelope"></i> 聯絡</a>` : ''}
+            ${member.instagram ? `<a href="https://instagram.com/${member.instagram}" target="_blank" style="color: var(--primary-color); text-decoration: none; font-size: 0.9rem;"><i class="fab fa-instagram"></i> @${member.instagram}</a>` : ''}
         `;
         teamGrid.appendChild(memberDiv);
     });

@@ -1,31 +1,13 @@
 {
   "groups": [
     {
-      "title": "程式設計讀書會",
-      "date": "2025-11-15",
+      "title": "每週共讀活動",
+      "date": "每週六",
       "time": "19:00 - 21:00",
-      "location": "線上會議",
-      "participants": 15,
+      "location": "Discord 線上社群",
+      "participants": 50,
       "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600",
-      "description": "一起學習 Python 程式設計，從基礎到進階"
-    },
-    {
-      "title": "英文學習小組",
-      "date": "2025-11-18",
-      "time": "18:30 - 20:30",
-      "location": "台北市大安區",
-      "participants": 8,
-      "image": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600",
-      "description": "透過討論和對話練習，提升英文口說能力"
-    },
-    {
-      "title": "數學解題工作坊",
-      "date": "2025-11-20",
-      "time": "14:00 - 17:00",
-      "location": "線上會議",
-      "participants": 20,
-      "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=600",
-      "description": "針對高中數學難題進行深入討論與解析"
+      "description": "主持人陪伴大家一起學習，溫暖互助的學習氛圍。隨時提出問題、解題討論，還可以小聊放鬆，讓學習不孤單"
     }
   ]
 }
