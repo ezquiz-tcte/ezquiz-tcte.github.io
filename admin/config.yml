@@ -2,6 +2,9 @@ backend:
   name: git-gateway
   branch: master # 你的 GitHub 分支名稱
 
+# 網站網址設定
+site_url: https://ezquiz-tcte.github.io
+
 media_folder: "images/uploads" # 上傳的圖片儲存位置
 public_folder: "/images/uploads" # 公開訪問路徑
 
