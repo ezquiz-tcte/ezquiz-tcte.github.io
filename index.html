@@ -16,10 +16,11 @@
                 <h1>EZQuiz</h1>
             </div>
             <ul class="nav-menu">
-                <li><a href="#home">首頁</a></li>
-                <li><a href="#features">特色</a></li>
-                <li><a href="#team">團隊</a></li>
-                <li><a href="#contact">聯絡我們</a></li>
+                <li><a href="index.html">首頁</a></li>
+                <li><a href="#app">APP</a></li>
+                <li><a href="#study-group">讀書會</a></li>
+                <li><a href="#instagram">Instagram</a></li>
+                <li><a href="team.html">團隊成員</a></li>
             </ul>
             <div class="hamburger">
                 <span></span>
@@ -45,87 +46,98 @@
         </div>
     </section>
 
-    <!-- 特色功能 -->
-    <section id="features" class="features-section">
+    <!-- APP 介紹 -->
+    <section id="app" class="app-section">
         <div class="container">
-            <h2 class="section-title">平台特色</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>智能學習</h3>
-                    <p>AI 驅動的個性化學習路徑，讓每個學生都能找到最適合自己的學習方式</p>
+            <h2 class="section-title">EZQuiz APP</h2>
+            <div class="app-content">
+                <div class="app-image">
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800" alt="EZQuiz APP" id="appImage">
                 </div>
-                <div class="feature-card">
-                    <div class="icon">
-                        <i class="fas fa-chart-line"></i>
+                <div class="app-info">
+                    <h3>隨時隨地，智能學習</h3>
+                    <p id="appDescription">下載 EZQuiz APP，享受更便捷的學習體驗。支援離線學習、即時同步、智能提醒等功能。</p>
+                    <div class="app-features">
+                        <div class="app-feature-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>跨平台支援</span>
+                        </div>
+                        <div class="app-feature-item">
+                            <i class="fas fa-wifi"></i>
+                            <span>離線學習</span>
+                        </div>
+                        <div class="app-feature-item">
+                            <i class="fas fa-sync"></i>
+                            <span>即時同步</span>
+                        </div>
+                        <div class="app-feature-item">
+                            <i class="fas fa-bell"></i>
+                            <span>智能提醒</span>
+                        </div>
                     </div>
-                    <h3>進度追蹤</h3>
-                    <p>即時追蹤學習進度，清楚掌握每個知識點的掌握程度</p>
-                </div>
-                <div class="feature-card">
-                    <div class="icon">
-                        <i class="fas fa-users"></i>
+                    <div class="download-buttons">
+                        <a href="#" class="download-btn">
+                            <i class="fab fa-apple"></i>
+                            <div>
+                                <small>Download on the</small>
+                                <strong>App Store</strong>
+                            </div>
+                        </a>
+                        <a href="#" class="download-btn">
+                            <i class="fab fa-google-play"></i>
+                            <div>
+                                <small>GET IT ON</small>
+                                <strong>Google Play</strong>
+                            </div>
+                        </a>
                     </div>
-                    <h3>協作學習</h3>
-                    <p>與同學一起學習，分享筆記，互相幫助，共同進步</p>
-                </div>
-                <div class="feature-card">
-                    <div class="icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>隨時隨地</h3>
-                    <p>跨平台支援，無論手機、平板還是電腦，都能輕鬆學習</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 團隊介紹 -->
-    <section id="team" class="team-section">
+    <!-- 讀書會 -->
+    <section id="study-group" class="study-group-section">
         <div class="container">
-            <h2 class="section-title">團隊成員</h2>
-            <div class="team-grid" id="teamGrid">
-                <!-- Team members will be loaded from content/team.json -->
+            <h2 class="section-title">讀書會活動</h2>
+            <p class="section-subtitle">與志同道合的夥伴一起學習成長</p>
+            <div class="study-group-grid" id="studyGroupGrid">
+                <!-- Study groups will be loaded from content/study-groups.json -->
+            </div>
+            <div class="text-center mt-4">
+                <a href="#" class="btn-primary">查看更多活動</a>
             </div>
         </div>
     </section>
 
-    <!-- 聯絡我們 -->
-    <section id="contact" class="contact-section">
+    <!-- Instagram 動態 -->
+    <section id="instagram" class="instagram-section">
         <div class="container">
-            <h2 class="section-title">聯絡我們</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="info-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h3>Email</h3>
-                            <p>contact@ezquiz.com</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h3>電話</h3>
-                            <p>+886-2-1234-5678</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h3>地址</h3>
-                            <p>台北市信義區信義路五段7號</p>
-                        </div>
-                    </div>
-                </div>
-                <form class="contact-form">
-                    <input type="text" placeholder="您的姓名" required>
-                    <input type="email" placeholder="您的 Email" required>
-                    <textarea placeholder="您的訊息" rows="5" required></textarea>
-                    <button type="submit" class="btn-primary">送出訊息</button>
-                </form>
+            <h2 class="section-title">
+                <i class="fab fa-instagram"></i> Instagram 動態
+            </h2>
+            <p class="section-subtitle">追蹤我們的最新消息與學習分享</p>
+            <div class="instagram-grid" id="instagramGrid">
+                <!-- Instagram posts will be loaded from content/instagram.json -->
+            </div>
+            <div class="text-center mt-4">
+                <a href="https://www.instagram.com/ezquiz" target="_blank" class="btn-primary">
+                    <i class="fab fa-instagram"></i> 追蹤我們
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心團隊成員（首頁精選） -->
+    <section id="team" class="team-preview-section">
+        <div class="container">
+            <h2 class="section-title">核心團隊</h2>
+            <p class="section-subtitle">認識我們的核心成員</p>
+            <div class="team-grid" id="teamPreviewGrid">
+                <!-- Featured team members will be loaded from content/team.json -->
+            </div>
+            <div class="text-center mt-4">
+                <a href="team.html" class="btn-primary">查看所有成員</a>
             </div>
         </div>
     </section>
@@ -141,10 +153,10 @@
                 <div class="footer-section">
                     <h4>快速連結</h4>
                     <ul>
-                        <li><a href="#home">首頁</a></li>
-                        <li><a href="#features">特色</a></li>
-                        <li><a href="#team">團隊</a></li>
-                        <li><a href="#contact">聯絡我們</a></li>
+                        <li><a href="index.html">首頁</a></li>
+                        <li><a href="#app">APP</a></li>
+                        <li><a href="#study-group">讀書會</a></li>
+                        <li><a href="team.html">團隊成員</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">

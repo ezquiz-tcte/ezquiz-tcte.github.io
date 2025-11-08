@@ -68,6 +68,11 @@ body {
     color: var(--primary-color);
 }
 
+.nav-menu a.active {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
 .hamburger {
     display: none;
     flex-direction: column;
@@ -461,6 +466,297 @@ body {
     }
 }
 
+/* APP 區塊 */
+.app-section {
+    padding: 100px 0;
+    background: white;
+}
+
+.app-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.app-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+
+.app-info h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--dark-color);
+}
+
+.app-info p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+.app-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.app-feature-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.app-feature-item i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.download-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.download-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 12px 24px;
+    background: var(--dark-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.download-btn:hover {
+    background: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(74, 144, 226, 0.3);
+}
+
+.download-btn i {
+    font-size: 2rem;
+}
+
+.download-btn small {
+    display: block;
+    font-size: 0.7rem;
+}
+
+.download-btn strong {
+    display: block;
+    font-size: 1rem;
+}
+
+/* 讀書會區塊 */
+.study-group-section {
+    padding: 100px 0;
+    background: var(--light-color);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 1.1rem;
+    margin-top: -1.5rem;
+    margin-bottom: 3rem;
+}
+
+.study-group-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.study-group-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.study-group-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.study-group-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.study-group-content {
+    padding: 1.5rem;
+}
+
+.study-group-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--dark-color);
+}
+
+.study-group-date {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.study-group-description {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.study-group-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #999;
+}
+
+/* Instagram 區塊 */
+.instagram-section {
+    padding: 100px 0;
+    background: white;
+}
+
+.instagram-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.instagram-post {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    cursor: pointer;
+    aspect-ratio: 1;
+}
+
+.instagram-post img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.instagram-post:hover img {
+    transform: scale(1.1);
+}
+
+.instagram-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.instagram-post:hover .instagram-overlay {
+    opacity: 1;
+}
+
+.instagram-stats {
+    color: white;
+    display: flex;
+    gap: 2rem;
+    font-size: 1.2rem;
+}
+
+.instagram-stats span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* 團隊預覽區塊 */
+.team-preview-section {
+    padding: 100px 0;
+    background: var(--light-color);
+}
+
+.mt-4 {
+    margin-top: 2rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* 頁面標題 */
+.page-header {
+    margin-top: 70px;
+    padding: 80px 0 60px;
+    background: var(--gradient-1);
+    color: white;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.page-header p {
+    font-size: 1.3rem;
+    opacity: 0.9;
+}
+
+/* 團隊篩選區塊 */
+.team-filter-section {
+    padding: 3rem 0;
+    background: var(--light-color);
+}
+
+.filter-controls {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.search-input,
+.role-filter {
+    padding: 12px 20px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    min-width: 250px;
+    transition: border-color 0.3s;
+}
+
+.search-input:focus,
+.role-filter:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* 所有團隊成員區塊 */
+.all-team-section {
+    padding: 60px 0 100px;
+    background: white;
+}
+
 /* 響應式設計 */
 @media (max-width: 768px) {
     .nav-menu {
@@ -508,5 +804,27 @@ body {
 
     .slider-btn.next {
         right: 10px;
+    }
+
+    .app-content {
+        grid-template-columns: 1fr;
+    }
+
+    .download-buttons {
+        flex-direction: column;
+    }
+
+    .page-header h1 {
+        font-size: 2rem;
+    }
+
+    .filter-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-input,
+    .role-filter {
+        min-width: 100%;
     }
 }

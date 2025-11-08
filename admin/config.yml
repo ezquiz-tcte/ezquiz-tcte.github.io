@@ -63,6 +63,52 @@ collections:
               - {label: "Twitter", name: "twitter", widget: "string", required: false}
               - {label: "LinkedIn", name: "linkedin", widget: "string", required: false}
 
+      - label: "團隊成員"
+        name: "team-data"
+        file: "content/team.json"
+        fields:
+          - label: "團隊成員列表"
+            name: "team"
+            widget: "list"
+            fields:
+              - {label: "姓名", name: "name", widget: "string"}
+              - {label: "職位", name: "role", widget: "string"}
+              - {label: "類別", name: "category", widget: "select", options: ["leader", "developer", "design", "marketing", "content"], default: "developer"}
+              - {label: "照片", name: "image", widget: "image"}
+              - {label: "簡介", name: "description", widget: "text"}
+              - {label: "Email", name: "email", widget: "string", required: false}
+              - {label: "順序", name: "order", widget: "number", default: 1, value_type: "int"}
+              - {label: "首頁重點推薦", name: "featured", widget: "boolean", default: false}
+
+      - label: "讀書會"
+        name: "study-groups"
+        file: "content/study-groups.json"
+        fields:
+          - label: "讀書會列表"
+            name: "groups"
+            widget: "list"
+            fields:
+              - {label: "標題", name: "title", widget: "string"}
+              - {label: "日期", name: "date", widget: "string", hint: "格式：YYYY-MM-DD"}
+              - {label: "時間", name: "time", widget: "string"}
+              - {label: "地點", name: "location", widget: "string"}
+              - {label: "參與人數", name: "participants", widget: "number", value_type: "int"}
+              - {label: "圖片", name: "image", widget: "image"}
+              - {label: "描述", name: "description", widget: "text"}
+
+      - label: "Instagram 貼文"
+        name: "instagram"
+        file: "content/instagram.json"
+        fields:
+          - label: "貼文列表"
+            name: "posts"
+            widget: "list"
+            fields:
+              - {label: "圖片", name: "image", widget: "image"}
+              - {label: "按讚數", name: "likes", widget: "number", value_type: "int"}
+              - {label: "留言數", name: "comments", widget: "number", value_type: "int"}
+              - {label: "連結", name: "link", widget: "string"}
+
   # 特色功能
   - name: "features"
     label: "平台特色"

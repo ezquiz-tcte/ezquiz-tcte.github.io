@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>團隊成員 - EZQuiz 學習平台</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+    <!-- 導航欄 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>EZQuiz</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">首頁</a></li>
+                <li><a href="index.html#app">APP</a></li>
+                <li><a href="index.html#study-group">讀書會</a></li>
+                <li><a href="index.html#instagram">Instagram</a></li>
+                <li><a href="team.html" class="active">團隊成員</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 頁面標題 -->
+    <section class="page-header">
+        <div class="container">
+            <h1>團隊成員</h1>
+            <p>認識 EZQuiz 背後的優秀團隊</p>
+        </div>
+    </section>
+
+    <!-- 搜尋和篩選 -->
+    <section class="team-filter-section">
+        <div class="container">
+            <div class="filter-controls">
+                <input type="text" id="searchInput" placeholder="搜尋成員..." class="search-input">
+                <select id="roleFilter" class="role-filter">
+                    <option value="all">所有職位</option>
+                    <option value="leader">領導團隊</option>
+                    <option value="developer">開發團隊</option>
+                    <option value="design">設計團隊</option>
+                    <option value="marketing">行銷團隊</option>
+                    <option value="content">內容團隊</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- 所有團隊成員 -->
+    <section class="all-team-section">
+        <div class="container">
+            <div class="team-grid" id="allTeamGrid">
+                <!-- All team members will be loaded from content/team.json -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>EZQuiz</h3>
+                    <p>讓學習變得更簡單，讓知識變得更有趣</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快速連結</h4>
+                    <ul>
+                        <li><a href="index.html">首頁</a></li>
+                        <li><a href="index.html#app">APP</a></li>
+                        <li><a href="index.html#study-group">讀書會</a></li>
+                        <li><a href="team.html">團隊成員</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>追蹤我們</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EZQuiz. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/team.js"></script>
+    <script>
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -123,12 +123,16 @@ function resetAutoSlide() {
     startAutoSlide();
 }
 
-// 載入團隊資料
+// 載入團隊資料（首頁精選）
 async function loadTeamData() {
     try {
         const response = await fetch('content/team.json');
         const data = await response.json();
-        displayTeam(data.team);
+        // 只顯示前 4 位標記為 featured 的成員
+        const featuredMembers = data.team
+            .filter(member => member.featured)
+            .slice(0, 4);
+        displayTeamPreview(featuredMembers.length > 0 ? featuredMembers : data.team.slice(0, 4));
     } catch (error) {
         console.error('Error loading team data:', error);
         // 使用預設團隊資料
@@ -137,33 +141,39 @@ async function loadTeamData() {
                 name: '張小明',
                 role: '創辦人 & CEO',
                 image: 'https://i.pravatar.cc/300?img=12',
-                description: '教育科技專家，致力於改善學習體驗'
+                description: '教育科技專家，致力於改善學習體驗',
+                featured: true
             },
             {
                 name: '李小華',
                 role: '技術長 CTO',
                 image: 'https://i.pravatar.cc/300?img=47',
-                description: '全端工程師，熱愛開發創新的學習工具'
+                description: '全端工程師，熱愛開發創新的學習工具',
+                featured: true
             },
             {
                 name: '王小美',
                 role: '設計總監',
                 image: 'https://i.pravatar.cc/300?img=32',
-                description: 'UX/UI 設計師，專注於打造直覺的使用體驗'
+                description: 'UX/UI 設計師，專注於打造直覺的使用體驗',
+                featured: true
             },
             {
                 name: '陳小強',
                 role: '產品經理',
                 image: 'https://i.pravatar.cc/300?img=60',
-                description: '擁有豐富的教育產品開發經驗'
+                description: '擁有豐富的教育產品開發經驗',
+                featured: true
             }
         ];
-        displayTeam(defaultTeam);
+        displayTeamPreview(defaultTeam);
     }
 }
 
-function displayTeam(teamMembers) {
-    const teamGrid = document.getElementById('teamGrid');
+function displayTeamPreview(teamMembers) {
+    const teamGrid = document.getElementById('teamPreviewGrid');
+    if (!teamGrid) return;
+    
     teamGrid.innerHTML = '';
     
     teamMembers.forEach(member => {
@@ -180,11 +190,160 @@ function displayTeam(teamMembers) {
 }
 
 // 表單提交
-document.querySelector('.contact-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('感謝您的訊息！我們會盡快與您聯繫。');
-    e.target.reset();
-});
+const contactForm = document.querySelector('.contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('感謝您的訊息！我們會盡快與您聯繫。');
+        e.target.reset();
+    });
+}
+
+// 載入讀書會資料
+async function loadStudyGroups() {
+    try {
+        const response = await fetch('content/study-groups.json');
+        const data = await response.json();
+        displayStudyGroups(data.groups.slice(0, 3)); // 只顯示前 3 個
+    } catch (error) {
+        console.error('Error loading study groups:', error);
+        // 使用預設資料
+        const defaultGroups = [
+            {
+                title: '程式設計讀書會',
+                date: '2025-11-15',
+                time: '19:00 - 21:00',
+                location: '線上會議',
+                participants: 15,
+                image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600',
+                description: '一起學習 Python 程式設計，從基礎到進階'
+            },
+            {
+                title: '英文學習小組',
+                date: '2025-11-18',
+                time: '18:30 - 20:30',
+                location: '台北市大安區',
+                participants: 8,
+                image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600',
+                description: '透過討論和對話練習，提升英文口說能力'
+            },
+            {
+                title: '數學解題工作坊',
+                date: '2025-11-20',
+                time: '14:00 - 17:00',
+                location: '線上會議',
+                participants: 20,
+                image: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?w=600',
+                description: '針對高中數學難題進行深入討論與解析'
+            }
+        ];
+        displayStudyGroups(defaultGroups);
+    }
+}
+
+function displayStudyGroups(groups) {
+    const groupsGrid = document.getElementById('studyGroupGrid');
+    if (!groupsGrid) return;
+    
+    groupsGrid.innerHTML = '';
+    
+    groups.forEach(group => {
+        const groupDiv = document.createElement('div');
+        groupDiv.className = 'study-group-card';
+        groupDiv.innerHTML = `
+            <img src="${group.image}" alt="${group.title}" class="study-group-image">
+            <div class="study-group-content">
+                <h3 class="study-group-title">${group.title}</h3>
+                <div class="study-group-date">
+                    <i class="fas fa-calendar"></i>
+                    ${group.date} ${group.time}
+                </div>
+                <p class="study-group-description">${group.description}</p>
+                <div class="study-group-meta">
+                    <span><i class="fas fa-map-marker-alt"></i> ${group.location}</span>
+                    <span><i class="fas fa-users"></i> ${group.participants} 人</span>
+                </div>
+            </div>
+        `;
+        groupsGrid.appendChild(groupDiv);
+    });
+}
+
+// 載入 Instagram 貼文
+async function loadInstagramPosts() {
+    try {
+        const response = await fetch('content/instagram.json');
+        const data = await response.json();
+        displayInstagramPosts(data.posts.slice(0, 6)); // 顯示前 6 篇
+    } catch (error) {
+        console.error('Error loading Instagram posts:', error);
+        // 使用預設資料
+        const defaultPosts = [
+            {
+                image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400',
+                likes: 234,
+                comments: 12,
+                link: '#'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400',
+                likes: 189,
+                comments: 8,
+                link: '#'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400',
+                likes: 312,
+                comments: 24,
+                link: '#'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=400',
+                likes: 267,
+                comments: 15,
+                link: '#'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400',
+                likes: 198,
+                comments: 9,
+                link: '#'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=400',
+                likes: 345,
+                comments: 28,
+                link: '#'
+            }
+        ];
+        displayInstagramPosts(defaultPosts);
+    }
+}
+
+function displayInstagramPosts(posts) {
+    const instagramGrid = document.getElementById('instagramGrid');
+    if (!instagramGrid) return;
+    
+    instagramGrid.innerHTML = '';
+    
+    posts.forEach(post => {
+        const postDiv = document.createElement('div');
+        postDiv.className = 'instagram-post';
+        postDiv.innerHTML = `
+            <img src="${post.image}" alt="Instagram Post">
+            <div class="instagram-overlay">
+                <div class="instagram-stats">
+                    <span><i class="fas fa-heart"></i> ${post.likes}</span>
+                    <span><i class="fas fa-comment"></i> ${post.comments}</span>
+                </div>
+            </div>
+        `;
+        postDiv.addEventListener('click', () => {
+            window.open(post.link, '_blank');
+        });
+        instagramGrid.appendChild(postDiv);
+    });
+}
 
 // 平滑滾動
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -204,4 +363,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 document.addEventListener('DOMContentLoaded', () => {
     loadSliderData();
     loadTeamData();
+    loadStudyGroups();
+    loadInstagramPosts();
 });
