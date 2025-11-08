@@ -2,6 +2,10 @@ backend:
   name: git-gateway
   branch: master # 你的 GitHub 分支名稱
 
+# Media 設定 - 圖片直接上傳到 GitHub repository
+media_folder: "images/uploads"  # 上傳檔案儲存在 repository 的路徑
+public_folder: "/images/uploads" # 網站上存取圖片的路徑
+
 # 本地開發模式（可選）
 # local_backend: true
 
