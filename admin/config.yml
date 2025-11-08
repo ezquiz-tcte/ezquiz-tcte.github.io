@@ -4,6 +4,9 @@ backend:
 
 # 網站網址設定
 site_url: https://ezquiz-tcte.github.io
+# Netlify Identity 設定
+identity_url: https://ezquiz-tcte.netlify.app/.netlify/identity
+gateway_url: https://ezquiz-tcte.netlify.app/.netlify/git
 
 media_folder: "images/uploads" # 上傳的圖片儲存位置
 public_folder: "/images/uploads" # 公開訪問路徑
