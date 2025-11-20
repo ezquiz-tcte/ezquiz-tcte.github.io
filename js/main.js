@@ -226,6 +226,8 @@ function displayTeamCarousel(teamMembers) {
         teamCarousel.appendChild(memberDiv);
     });
     
+    currentTeamSlide = 0;
+    teamCarousel.style.transform = 'translateX(0px)';
     updateTeamCarousel();
 }
 
@@ -254,16 +256,37 @@ function updateTeamCarousel() {
     const nextBtn = document.getElementById('teamNextBtn');
     
     if (!teamCarousel) return;
-    
+
+    const slides = teamCarousel.querySelectorAll('.team-member-slide');
+    if (!slides.length) return;
+
     const visibleSlides = getVisibleSlides();
-    const slideWidth = 100 / visibleSlides;
-    const offset = -(currentTeamSlide * slideWidth);
-    
-    teamCarousel.style.transform = `translateX(${offset}%)`;
-    
+    const maxSlide = Math.max(0, slides.length - visibleSlides);
+    if (currentTeamSlide > maxSlide) currentTeamSlide = maxSlide;
+    if (currentTeamSlide < 0) currentTeamSlide = 0;
+
+    // 視窗（可視區）通常是 track 的 parentElement
+    const viewport = teamCarousel.parentElement || document.documentElement;
+    const item = slides[currentTeamSlide];
+
+    // 計算要移動的像素值 (item.offsetLeft 為 item 在 track 的左偏移)
+    let offsetPx = item.offsetLeft;
+
+    // 若僅顯示 1 個卡片時要將卡片置中，避免卡片被截邊
+    if (visibleSlides === 1) {
+        offsetPx -= (viewport.clientWidth - item.offsetWidth) / 2;
+    }
+
+    // 限制最大、最小位移，避免移動過頭導致空白或被截
+    const maxOffset = Math.max(0, teamCarousel.scrollWidth - viewport.clientWidth);
+    if (offsetPx < 0) offsetPx = 0;
+    if (offsetPx > maxOffset) offsetPx = maxOffset;
+
+    teamCarousel.style.transform = `translateX(${-Math.round(offsetPx)}px)`;
+
     // 更新按鈕狀態
     if (prevBtn) prevBtn.disabled = currentTeamSlide === 0;
-    if (nextBtn) nextBtn.disabled = currentTeamSlide >= allFeaturedMembers.length - visibleSlides;
+    if (nextBtn) nextBtn.disabled = currentTeamSlide >= maxSlide;
 }
 
 // 監聽視窗大小變化
