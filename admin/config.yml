@@ -123,7 +123,7 @@ collections:
           - {label: "網站描述 (SEO)", name: "description", widget: "text"}
           - {label: "關鍵字 (SEO)", name: "keywords", widget: "string", hint: "用逗號分隔，例如：統測,學習平台,EZQuiz"}
           - {label: "網站語言", name: "language", widget: "string", default: "zh-TW"}
-          - {label: "版權年份", name: "copyrightYear", widget: "number", default: 2025}
+          - {label: "版權年份", name: "copyrightYear", widget: "number", default: 2026}
           - label: "社交媒體連結"
             name: "social"
             widget: "object"
@@ -132,11 +132,3 @@ collections:
               - {label: "Discord", name: "discord", widget: "string"}
               - {label: "Facebook", name: "facebook", widget: "string", required: false}
               - {label: "Twitter", name: "twitter", widget: "string", required: false}
-
-      - label: "Google 服務設定"
-        name: "google-services"
-        file: "content/settings/google-services.json"
-        fields:
-          - {label: "Google Analytics ID", name: "gaId", widget: "string", required: false}
-          - {label: "Google AdSense Publisher ID", name: "adsenseId", widget: "string", default: "pub-7905777487665696"}
-          - {label: "Google Search Console 驗證碼", name: "searchConsoleVerification", widget: "string", required: false}
