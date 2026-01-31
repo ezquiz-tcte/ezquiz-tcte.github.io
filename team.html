@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>團隊成員 - EZQuiz 學習平台</title>
+    <meta name="description" content="EZQuiz 提供乾淨簡潔的學習介面，支援統測國文、英文、數學練習。每週舉辦 Discord 共讀活動，打造溫暖互助的學習社群。">
+    <meta name="keywords" content="統測,學習平台,EZQuiz,國文,英文,數學,讀書會,Discord">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
@@ -13,7 +15,7 @@
     <nav class="navbar">
         <div class="container">
             <div class="logo">
-                <h1>EZQuiz</h1>
+                <h1 id="siteName">EZQuiz</h1>
             </div>
             <ul class="nav-menu">
                 <li><a href="index.html">首頁</a></li>
@@ -70,8 +72,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>EZQuiz</h3>
-                    <p>讓學習變得更簡單，讓知識變得更有趣</p>
+                    <h3 id="footerSiteName">EZQuiz</h3>
+                    <p id="footerTagline">讓學習變得更簡單，讓知識變得更有趣</p>
                 </div>
                 <div class="footer-section">
                     <h4>快速連結</h4>
@@ -84,13 +86,13 @@
                 </div>
                 <div class="footer-section">
                     <h4>追蹤我們</h4>
-                    <div class="social-links">
+                    <div class="social-links" id="footerSocialLinks">
                         <a href="https://www.instagram.com/ezquiz.tcte/" target="_blank"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 EZQuiz. All rights reserved.</p>
+                <p id="copyrightText">&copy; 2026 EZQuiz. All rights reserved.</p>
             </div>
         </div>
     </footer>

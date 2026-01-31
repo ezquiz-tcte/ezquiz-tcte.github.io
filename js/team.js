@@ -190,9 +190,89 @@ function filterTeam() {
     displayAllTeam(filteredMembers);
 }
 
+// 載入網站資訊（全域設定）
+async function loadSiteInfo() {
+    try {
+        const response = await fetch('content/settings/site-info.json');
+        const data = await response.json();
+        updateSiteInfo(data);
+    } catch (error) {
+        console.error('Error loading site info:', error);
+        // 保持 HTML 中的預設內容
+    }
+}
+
+function updateSiteInfo(siteInfo) {
+    // 更新頁面標題
+    if (siteInfo.siteName) {
+        document.title = `團隊成員 - ${siteInfo.siteName}`;
+    }
+
+    // 更新 meta 描述
+    if (siteInfo.description) {
+        let metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) {
+            metaDesc.setAttribute('content', siteInfo.description);
+        }
+    }
+
+    // 更新 meta 關鍵字
+    if (siteInfo.keywords) {
+        let metaKeywords = document.querySelector('meta[name="keywords"]');
+        if (metaKeywords) {
+            metaKeywords.setAttribute('content', siteInfo.keywords);
+        }
+    }
+
+    // 更新導航欄網站名稱
+    const siteName = document.getElementById('siteName');
+    if (siteName && siteInfo.siteName) {
+        siteName.textContent = siteInfo.siteName.replace(' 學習平台', '');
+    }
+
+    // 更新 Footer 網站名稱
+    const footerSiteName = document.getElementById('footerSiteName');
+    if (footerSiteName && siteInfo.siteName) {
+        footerSiteName.textContent = siteInfo.siteName.replace(' 學習平台', '');
+    }
+
+    // 更新 Footer 標語
+    const footerTagline = document.getElementById('footerTagline');
+    if (footerTagline && siteInfo.tagline) {
+        footerTagline.textContent = siteInfo.tagline;
+    }
+
+    // 更新版權文字
+    const copyrightText = document.getElementById('copyrightText');
+    if (copyrightText && siteInfo.copyrightYear && siteInfo.siteName) {
+        copyrightText.innerHTML = `&copy; ${siteInfo.copyrightYear} ${siteInfo.siteName.replace(' 學習平台', '')}. All rights reserved.`;
+    }
+
+    // 更新社交媒體連結
+    if (siteInfo.social) {
+        const socialLinks = document.getElementById('footerSocialLinks');
+        if (socialLinks) {
+            let linksHTML = '';
+            if (siteInfo.social.instagram) {
+                linksHTML += `<a href="${siteInfo.social.instagram}" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>`;
+            }
+            if (siteInfo.social.facebook) {
+                linksHTML += `<a href="${siteInfo.social.facebook}" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>`;
+            }
+            if (siteInfo.social.twitter) {
+                linksHTML += `<a href="${siteInfo.social.twitter}" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>`;
+            }
+            if (linksHTML) {
+                socialLinks.innerHTML = linksHTML;
+            }
+        }
+    }
+}
+
 // 頁面載入時初始化
 document.addEventListener('DOMContentLoaded', () => {
     loadAllTeamMembers();
+    loadSiteInfo();
     // 頁面載入後自動觸發篩選，顯示現任成員
     setTimeout(() => {
         filterTeam();
