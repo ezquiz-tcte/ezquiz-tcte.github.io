@@ -1,0 +1,14 @@
+{
+  "siteName": "EZQuiz 學習平台",
+  "tagline": "讓學習變得更簡單",
+  "description": "EZQuiz 提供乾淨簡潔的學習介面，支援統測國文、英文、數學練習。每週舉辦 Discord 共讀活動，打造溫暖互助的學習社群。",
+  "keywords": "統測,學習平台,EZQuiz,國文,英文,數學,讀書會,Discord",
+  "language": "zh-TW",
+  "copyrightYear": 2025,
+  "social": {
+    "instagram": "https://www.instagram.com/ezquiz.tcte/",
+    "discord": "https://discord.com/invite/ag7NzXTNBA",
+    "facebook": "",
+    "twitter": ""
+  }
+}

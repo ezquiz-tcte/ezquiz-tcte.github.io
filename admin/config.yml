@@ -10,44 +10,84 @@ public_folder: "/images/uploads" # 網站上存取圖片的路徑
 # local_backend: true
 
 collections:
-  # Slider 輪播圖管理
-  - name: "slider"
-    label: "首頁輪播圖"
-    folder: "content/slides"
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - {label: "標題", name: "title", widget: "string"}
-      - {label: "描述", name: "description", widget: "text"}
-      - {label: "圖片", name: "image", widget: "image"}
-      - {label: "按鈕文字", name: "buttonText", widget: "string"}
-      - {label: "按鈕連結", name: "buttonLink", widget: "string"}
-      - {label: "排序", name: "order", widget: "number", default: 0}
-      - {label: "發布", name: "published", widget: "boolean", default: true}
-
-  # 網站設定
-  - name: "settings"
-    label: "網站設定"
+  # 網站內容設定
+  - name: "content"
+    label: "網站內容管理"
     files:
-      - label: "網站資訊"
-        name: "site"
-        file: "content/settings/site.json"
+      # 首頁輪播圖
+      - label: "首頁輪播圖"
+        name: "slider"
+        file: "content/slider.json"
         fields:
-          - {label: "網站名稱", name: "title", widget: "string"}
-          - {label: "網站描述", name: "description", widget: "text"}
-          - {label: "Logo", name: "logo", widget: "image", required: false}
-          - {label: "Email", name: "email", widget: "string"}
-          - {label: "電話", name: "phone", widget: "string"}
-          - {label: "地址", name: "address", widget: "string"}
-          - label: "社交媒體"
-            name: "social"
+          - label: "輪播項目"
+            name: "slides"
+            widget: "list"
+            fields:
+              - {label: "標題", name: "title", widget: "string"}
+              - {label: "描述", name: "description", widget: "text"}
+              - {label: "圖片網址", name: "image", widget: "string", hint: "請輸入完整的圖片網址"}
+              - {label: "按鈕文字", name: "buttonText", widget: "string"}
+              - {label: "按鈕連結", name: "buttonLink", widget: "string"}
+
+      # APP 介紹
+      - label: "APP 介紹"
+        name: "app"
+        file: "content/app.json"
+        fields:
+          - {label: "APP 標題", name: "title", widget: "string", default: "EZQuiz APP"}
+          - {label: "副標題", name: "subtitle", widget: "string", default: "介面乾淨清爽，無壓力學習"}
+          - {label: "APP 圖片", name: "image", widget: "string", hint: "APP 展示圖片網址"}
+          - {label: "APP 簡介", name: "description", widget: "text"}
+          - label: "APP 特色"
+            name: "features"
+            widget: "list"
+            fields:
+              - {label: "圖示 (Font Awesome)", name: "icon", widget: "string", hint: "例如：fas fa-list-ol"}
+              - {label: "特色文字", name: "text", widget: "string"}
+          - label: "下載連結"
+            name: "downloads"
             widget: "object"
             fields:
-              - {label: "Facebook", name: "facebook", widget: "string", required: false}
-              - {label: "Instagram", name: "instagram", widget: "string", required: false}
-              - {label: "Twitter", name: "twitter", widget: "string", required: false}
-              - {label: "LinkedIn", name: "linkedin", widget: "string", required: false}
+              - {label: "App Store 連結", name: "appStore", widget: "string"}
+              - {label: "Google Play 連結", name: "googlePlay", widget: "string"}
 
+      # 讀書會管理
+      - label: "讀書會活動"
+        name: "study-groups"
+        file: "content/study-groups.json"
+        fields:
+          - label: "讀書會列表"
+            name: "groups"
+            widget: "list"
+            fields:
+              - {label: "標題", name: "title", widget: "string"}
+              - {label: "日期", name: "date", widget: "string", hint: "例如：每週六或日"}
+              - {label: "時間", name: "time", widget: "string", hint: "例如：19:00 - 21:00"}
+              - {label: "地點", name: "location", widget: "string"}
+              - {label: "圖片網址", name: "image", widget: "string"}
+              - {label: "活動描述", name: "description", widget: "text"}
+
+      # Instagram 特色管理
+      - label: "Instagram 特色"
+        name: "instagram-features"
+        file: "content/instagram-features.json"
+        fields:
+          - {label: "區塊標題", name: "title", widget: "string", default: "Instagram 社群"}
+          - {label: "副標題", name: "subtitle", widget: "string", default: "加入我們的 Instagram，掌握最新學習動態"}
+          - {label: "Instagram 帳號", name: "account", widget: "string", default: "ezquiz.tcte"}
+          - {label: "Instagram 連結", name: "link", widget: "string"}
+          - label: "特色卡片"
+            name: "features"
+            widget: "list"
+            fields:
+              - {label: "圖示 (Font Awesome)", name: "icon", widget: "string"}
+              - {label: "卡片標題", name: "title", widget: "string"}
+              - label: "特色列表"
+                name: "items"
+                widget: "list"
+                field: {label: "特色項目", name: "item", widget: "string"}
+
+      # 團隊成員
       - label: "團隊成員"
         name: "team-data"
         file: "content/team.json"
@@ -58,51 +98,45 @@ collections:
             fields:
               - {label: "姓名", name: "name", widget: "string"}
               - {label: "職位", name: "role", widget: "string"}
-              - {label: "類別", name: "category", widget: "select", options: ["leader", "community", "app-dev", "design", "alumni"], default: "app-dev"}
-              - {label: "照片", name: "image", widget: "image"}
+              - label: "類別"
+                name: "category"
+                widget: "select"
+                multiple: true
+                options: ["leader", "community", "app-dev", "design", "host", "alumni"]
+                default: ["community"]
+              - {label: "照片路徑", name: "image", widget: "string", hint: "例如：images/headshot/name.jpg"}
               - {label: "簡介", name: "description", widget: "text"}
-              - {label: "Instagram", name: "instagram", widget: "string", required: false}
-              - {label: "順序", name: "order", widget: "number", default: 1, value_type: "int"}
-              - {label: "首頁重點推薦", name: "featured", widget: "boolean", default: false}
+              - {label: "Instagram 帳號", name: "instagram", widget: "string", required: false}
+              - {label: "顯示順序", name: "order", widget: "number", default: 1, value_type: "int"}
+              - {label: "首頁精選推薦", name: "featured", widget: "boolean", default: false}
 
-      - label: "讀書會"
-        name: "study-groups"
-        file: "content/study-groups.json"
+  # 網站設定
+  - name: "settings"
+    label: "網站全域設定"
+    files:
+      - label: "網站基本資訊"
+        name: "site-info"
+        file: "content/settings/site-info.json"
         fields:
-          - label: "讀書會列表"
-            name: "groups"
-            widget: "list"
+          - {label: "網站名稱", name: "siteName", widget: "string", default: "EZQuiz 學習平台"}
+          - {label: "網站標語", name: "tagline", widget: "string", default: "讓學習變得更簡單"}
+          - {label: "網站描述 (SEO)", name: "description", widget: "text"}
+          - {label: "關鍵字 (SEO)", name: "keywords", widget: "string", hint: "用逗號分隔，例如：統測,學習平台,EZQuiz"}
+          - {label: "網站語言", name: "language", widget: "string", default: "zh-TW"}
+          - {label: "版權年份", name: "copyrightYear", widget: "number", default: 2025}
+          - label: "社交媒體連結"
+            name: "social"
+            widget: "object"
             fields:
-              - {label: "標題", name: "title", widget: "string"}
-              - {label: "日期", name: "date", widget: "string", hint: "格式：YYYY-MM-DD"}
-              - {label: "時間", name: "time", widget: "string"}
-              - {label: "地點", name: "location", widget: "string"}
-              - {label: "參與人數", name: "participants", widget: "number", value_type: "int"}
-              - {label: "圖片", name: "image", widget: "image"}
-              - {label: "描述", name: "description", widget: "text"}
+              - {label: "Instagram", name: "instagram", widget: "string"}
+              - {label: "Discord", name: "discord", widget: "string"}
+              - {label: "Facebook", name: "facebook", widget: "string", required: false}
+              - {label: "Twitter", name: "twitter", widget: "string", required: false}
 
-      - label: "Instagram 貼文"
-        name: "instagram"
-        file: "content/instagram.json"
+      - label: "Google 服務設定"
+        name: "google-services"
+        file: "content/settings/google-services.json"
         fields:
-          - label: "貼文列表"
-            name: "posts"
-            widget: "list"
-            fields:
-              - {label: "圖片", name: "image", widget: "image"}
-              - {label: "按讚數", name: "likes", widget: "number", value_type: "int"}
-              - {label: "留言數", name: "comments", widget: "number", value_type: "int"}
-              - {label: "連結", name: "link", widget: "string"}
-
-  # 特色功能
-  - name: "features"
-    label: "平台特色"
-    folder: "content/features"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "標題", name: "title", widget: "string"}
-      - {label: "描述", name: "description", widget: "text"}
-      - {label: "圖示 (Font Awesome class)", name: "icon", widget: "string", hint: "例如：fas fa-graduation-cap"}
-      - {label: "排序", name: "order", widget: "number", default: 0}
-      - {label: "顯示", name: "published", widget: "boolean", default: true}
+          - {label: "Google Analytics ID", name: "gaId", widget: "string", required: false}
+          - {label: "Google AdSense Publisher ID", name: "adsenseId", widget: "string", default: "pub-7905777487665696"}
+          - {label: "Google Search Console 驗證碼", name: "searchConsoleVerification", widget: "string", required: false}

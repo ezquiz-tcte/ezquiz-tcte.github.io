@@ -1,0 +1,28 @@
+{
+  "title": "EZQuiz APP",
+  "subtitle": "介面乾淨清爽，無壓力學習",
+  "image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800",
+  "description": "EZQuiz APP 設計簡潔，每次只需完成 10 題，輕鬆無壓力。支援離線學習，國文、英文、數學科目提供詳細解析。",
+  "features": [
+    {
+      "icon": "fas fa-list-ol",
+      "text": "一次 10 題"
+    },
+    {
+      "icon": "fas fa-download",
+      "text": "離線學習"
+    },
+    {
+      "icon": "fas fa-book-open",
+      "text": "國英數解析"
+    },
+    {
+      "icon": "fas fa-paint-brush",
+      "text": "介面清爽"
+    }
+  ],
+  "downloads": {
+    "appStore": "https://apps.apple.com/us/app/ez-quiz/id6749570516",
+    "googlePlay": "https://play.google.com/store/apps/details?id=com.ezquiz.tcteking"
+  }
+}

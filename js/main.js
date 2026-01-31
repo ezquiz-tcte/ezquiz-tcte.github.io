@@ -364,6 +364,134 @@ function displayStudyGroups(groups) {
     });
 }
 
+// 載入 APP 資料
+async function loadAppData() {
+    try {
+        const response = await fetch('content/app.json');
+        const data = await response.json();
+        displayAppSection(data);
+    } catch (error) {
+        console.error('Error loading app data:', error);
+        // 保持 HTML 中的預設內容
+    }
+}
+
+function displayAppSection(appData) {
+    // 更新 APP 圖片
+    const appImage = document.getElementById('appImage');
+    if (appImage && appData.image) {
+        appImage.src = appData.image;
+        appImage.alt = appData.title;
+    }
+
+    // 更新 APP 標題
+    const appTitle = document.querySelector('.app-info h3');
+    if (appTitle && appData.subtitle) {
+        appTitle.textContent = appData.subtitle;
+    }
+
+    // 更新 APP 描述
+    const appDescription = document.getElementById('appDescription');
+    if (appDescription && appData.description) {
+        appDescription.textContent = appData.description;
+    }
+
+    // 更新 APP 特色
+    if (appData.features && appData.features.length > 0) {
+        const featuresContainer = document.querySelector('.app-features');
+        if (featuresContainer) {
+            featuresContainer.innerHTML = '';
+            appData.features.forEach(feature => {
+                const featureDiv = document.createElement('div');
+                featureDiv.className = 'app-feature-item';
+                featureDiv.innerHTML = `
+                    <i class="${feature.icon}"></i>
+                    <span>${feature.text}</span>
+                `;
+                featuresContainer.appendChild(featureDiv);
+            });
+        }
+    }
+
+    // 更新下載按鈕連結
+    if (appData.downloads) {
+        const appStoreBtn = document.querySelector('.download-buttons a[href*="apps.apple.com"]');
+        const googlePlayBtn = document.querySelector('.download-buttons a[href*="play.google.com"]');
+
+        if (appStoreBtn && appData.downloads.appStore) {
+            appStoreBtn.href = appData.downloads.appStore;
+        }
+        if (googlePlayBtn && appData.downloads.googlePlay) {
+            googlePlayBtn.href = appData.downloads.googlePlay;
+        }
+    }
+}
+
+// 載入 Instagram 特色資料
+async function loadInstagramFeatures() {
+    try {
+        const response = await fetch('content/instagram-features.json');
+        const data = await response.json();
+        displayInstagramFeatures(data);
+    } catch (error) {
+        console.error('Error loading Instagram features:', error);
+        // 保持 HTML 中的預設內容
+    }
+}
+
+function displayInstagramFeatures(igData) {
+    // 更新標題
+    const sectionTitle = document.querySelector('.instagram-section .section-title');
+    if (sectionTitle && igData.title) {
+        sectionTitle.innerHTML = `<i class="fab fa-instagram"></i> ${igData.title}`;
+    }
+
+    // 更新副標題
+    const sectionSubtitle = document.querySelector('.instagram-section .section-subtitle');
+    if (sectionSubtitle && igData.subtitle) {
+        sectionSubtitle.textContent = igData.subtitle;
+    }
+
+    // 更新特色卡片
+    if (igData.features && igData.features.length > 0) {
+        const featuresContainer = document.querySelector('.instagram-features');
+        if (featuresContainer) {
+            featuresContainer.innerHTML = '';
+            igData.features.forEach(feature => {
+                const cardDiv = document.createElement('div');
+                cardDiv.className = 'instagram-feature-card';
+
+                let itemsHtml = '';
+                if (feature.items && feature.items.length > 0) {
+                    itemsHtml = feature.items.map(item =>
+                        `<li><i class="fas fa-check"></i> ${item}</li>`
+                    ).join('');
+                }
+
+                cardDiv.innerHTML = `
+                    <div class="instagram-icon">
+                        <i class="${feature.icon}"></i>
+                    </div>
+                    <h3>${feature.title}</h3>
+                    <ul>
+                        ${itemsHtml}
+                    </ul>
+                `;
+                featuresContainer.appendChild(cardDiv);
+            });
+        }
+    }
+
+    // 更新追蹤按鈕
+    if (igData.link && igData.account) {
+        const igButton = document.querySelector('.btn-instagram');
+        if (igButton) {
+            igButton.href = igData.link;
+            igButton.innerHTML = `<i class="fab fa-instagram"></i> 追蹤 @${igData.account}`;
+        }
+    }
+}
+
 // 平滑滾動
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -383,4 +511,6 @@ document.addEventListener('DOMContentLoaded', () => {
     loadSliderData();
     loadTeamData();
     loadStudyGroups();
+    loadAppData();
+    loadInstagramFeatures();
 });

@@ -1,0 +1,27 @@
+{
+  "title": "Instagram 社群",
+  "subtitle": "加入我們的 Instagram，掌握最新學習動態",
+  "account": "ezquiz.tcte",
+  "link": "https://www.instagram.com/ezquiz.tcte/",
+  "features": [
+    {
+      "icon": "fas fa-clock",
+      "title": "每日限時動態",
+      "items": [
+        "統測倒數計時",
+        "問答互動",
+        "英文每日測驗"
+      ]
+    },
+    {
+      "icon": "fas fa-images",
+      "title": "精選貼文分享",
+      "items": [
+        "學習技巧與心得",
+        "統測考試重點",
+        "專業知識分享",
+        "APP 功能更新"
+      ]
+    }
+  ]
+}
