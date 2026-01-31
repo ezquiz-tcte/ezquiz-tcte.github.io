@@ -31,23 +31,13 @@
       "featured": true
     },
     {
-      "name": "松鼠",
-      "role": "網頁設計 & 前讀書會主持",
-      "category": ["design", "host"],
-      "image": "images/headshot/squirrel.jpg",
-      "description": "協助設計網頁UI，曾擔任 114 讀書會主持，幽默風趣又溫暖",
-      "instagram": "monkeyeeeeeeeeeee",
-      "order": 4,
-      "featured": true
-    },
-    {
       "name": "芋頭",
       "role": "社群小編",
       "category": "community",
       "image": "images/headshot/taro.jpg",
       "description": "負責統測倒數限動，以溫暖短句鼓舞人心",
       "instagram": "",
-      "order": 5,
+      "order": 4,
       "featured": true
     },
     {
@@ -57,7 +47,7 @@
       "image": "images/headshot/matcha.jpg",
       "description": "負責成員頭像設計，並協助社群限動，風格可愛又溫暖",
       "instagram": "",
-      "order": 6,
+      "order": 5,
       "featured": true
     },
     {
@@ -67,7 +57,7 @@
       "image": "images/headshot/milkshake.jpg",
       "description": "協助發想貼文內容，涵蓋讀書心態與升學制度，就讀北科工設",
       "instagram": "",
-      "order": 7,
+      "order": 6,
       "featured": true
     },
     {
@@ -77,8 +67,38 @@
       "image": "images/headshot/stingray.jpg",
       "description": "自創立以來擔任小編至今，精心製作英文測驗並創立化工讀書帳",
       "instagram": "114study",
+      "order": 7,
+      "featured": true
+    },
+    {
+      "name": "蚯蚓",
+      "role": "社群小編",
+      "category": "community",
+      "image": "",
+      "description": "就讀設計，負責倒數限動",
+      "instagram": "",
       "order": 8,
       "featured": true
+    },
+    {
+      "name": "刺蝟",
+      "role": "社群小編",
+      "category": "community",
+      "image": "",
+      "description": "就讀畜保科，志願獸醫系，負責測驗限動",
+      "instagram": "",
+      "order": 9,
+      "featured": true
+    },
+    {
+      "name": "松鼠",
+      "role": "前網頁設計 & 前讀書會主持",
+      "category": ["alumni", "design", "host"],
+      "image": "images/headshot/squirrel.jpg",
+      "description": "協助設計網頁UI，曾擔任 114 讀書會主持，幽默風趣又溫暖",
+      "instagram": "monkeyeeeeeeeeeee",
+      "order": 10,
+      "featured": false
     },
     {
       "name": "柔瑩",
@@ -87,7 +107,7 @@
       "image": "images/headshot/koala.jpg",
       "description": "負責英文口說限動，以貼合時事的英文短句引起學生興趣",
       "instagram": "smiling._.life",
-      "order": 9,
+      "order": 11,
       "featured": false
     },
     {
@@ -97,7 +117,7 @@
       "image": "images/headshot/jiayi.jpg",
       "description": "以溫暖風格編寫短句引起共鳴，協助創立114讀書會",
       "instagram": "",
-      "order": 10,
+      "order": 12,
       "featured": false
     },
     {
@@ -107,7 +127,7 @@
       "image": "",
       "description": "曾擔任 113 讀書會主持，活潑開朗，就讀雲科大國管學程",
       "instagram": "_joanna_716",
-      "order": 11,
+      "order": 13,
       "featured": false
     },
     {
@@ -117,7 +137,7 @@
       "image": "",
       "description": "曾負責 IG 倒數問答限動，回覆真誠並提出創意貼文想法",
       "instagram": "",
-      "order": 12,
+      "order": 14,
       "featured": false
     },
     {
@@ -127,7 +147,7 @@
       "image": "",
       "description": "曾負責 DC 英文題目，提供易懂解析幫助學生熟悉題型",
       "instagram": "",
-      "order": 13,
+      "order": 15,
       "featured": false
     },
     {
@@ -137,7 +157,7 @@
       "image": "",
       "description": "曾負責倒數問答限動，以溫暖的文字或圖像呈現內容",
       "instagram": "yunfantuan_030",
-      "order": 14,
+      "order": 16,
       "featured": false
     },
     {
@@ -147,7 +167,7 @@
       "image": "",
       "description": "曾負責倒數與問答限動，就讀高科大金融系",
       "instagram": "",
-      "order": 15,
+      "order": 17,
       "featured": false
     },
     {
@@ -157,7 +177,7 @@
       "image": "",
       "description": "曾負責 IG 問答倒數限動，文字真誠溫暖，社工系畢業",
       "instagram": "",
-      "order": 16,
+      "order": 18,
       "featured": false
     },
     {
@@ -167,7 +187,7 @@
       "image": "",
       "description": "曾擔任 112 讀書會主持，開朗直率善於社交，就讀中科大 AI 系",
       "instagram": "",
-      "order": 17,
+      "order": 19,
       "featured": false
     },
     {
@@ -177,7 +197,7 @@
       "image": "",
       "description": "曾擔任 IG 問答互動小編，回覆用心給予滿滿溫暖",
       "instagram": "",
-      "order": 18,
+      "order": 20,
       "featured": false
     },
     {
@@ -187,7 +207,7 @@
       "image": "",
       "description": "曾負責英文口說限動，協調多人錄音展現協作能力",
       "instagram": "",
-      "order": 19,
+      "order": 21,
       "featured": false
     },
     {
@@ -197,7 +217,7 @@
       "image": "",
       "description": "曾負責 IG 英文口說，發音地道常以溫暖英文句子鼓舞人心",
       "instagram": "qiaomeiyuan",
-      "order": 20,
+      "order": 22,
       "featured": false
     },
     {
@@ -207,7 +227,7 @@
       "image": "",
       "description": "曾擔任限動與貼文版面設計，設計的模板至今仍在沿用",
       "instagram": "",
-      "order": 21,
+      "order": 23,
       "featured": false
     },
     {
@@ -217,7 +237,7 @@
       "image": "",
       "description": "曾負責 IG 英文作答限動和英文筆記貼文，畢業於台科大應用外語系",
       "instagram": "",
-      "order": 22,
+      "order": 24,
       "featured": false
     },
     {
@@ -227,7 +247,7 @@
       "image": "",
       "description": "曾負責英文限動分享簡單短句和文法補充，就讀台科大企管系",
       "instagram": "",
-      "order": 23,
+      "order": 25,
       "featured": false
     },
     {
@@ -237,7 +257,7 @@
       "image": "",
       "description": "曾擔任 112 讀書會主持，透過 Google Meet 舉行並設立規則",
       "instagram": "",
-      "order": 24,
+      "order": 26,
       "featured": false
     },
     {
@@ -247,7 +267,7 @@
       "image": "",
       "description": "曾負責 IG 倒數限動，善用溫暖短句引起共鳴，就讀北科大應英系",
       "instagram": "",
-      "order": 25,
+      "order": 27,
       "featured": false
     },
     {
@@ -257,7 +277,7 @@
       "image": "",
       "description": "曾負責 iOS app 開發並提出開發進度，畢業於台科大資工系",
       "instagram": "",
-      "order": 26,
+      "order": 28,
       "featured": false
     }
   ]
