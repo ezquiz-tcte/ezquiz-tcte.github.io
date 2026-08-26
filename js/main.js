@@ -38,10 +38,10 @@ async function loadSliderData() {
                 "buttonLink": "#app"
             },
             {
-                "title": "Discord 每週共讀",
-                "description": "相互陪伴、解題討論與輕鬆交流。",
+                "title": "Discord 語音共讀室",
+                "description": "語音頻道全天開放，隨時進來一起讀，開麥討論或靜音自習都可以。",
                 "image": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=1600",
-                "buttonText": "加入 Discord",
+                "buttonText": "進入語音共讀",
                 "buttonLink": "https://discord.com/invite/ag7NzXTNBA"
             },
             {
@@ -156,46 +156,18 @@ async function loadTeamData() {
                 name: '咕嚕',
                 role: 'iOS 開發',
                 image: 'images/headshot/glue.jpg',
-                description: '負責 iOS 開發與新功能構思，並主導實作與優化。目前就讀台科電機',
+                description: '負責 iOS 開發與新功能構思。目前就讀台科電機',
                 featured: true
             },
             {
                 name: '青蛙',
-                role: '讀書會主持 & 社群小編',
+                role: '社群小編',
                 image: 'images/headshot/frog.jpg',
-                description: '擔任 115 讀書會主持，並負責倒數與國文題目限動，以可愛風格呈現淺顯易懂的解析',
+                description: '負責測驗限動，以可愛風格呈現易懂的解析',
                 featured: true
             },
             {
-                name: '松鼠',
-                role: '網頁設計 & 前讀書會主持',
-                image: 'images/headshot/squirrel.jpg',
-                description: '目前協助設計網頁UI，曾擔任 114 讀書會主持，幽默風趣又溫暖',
-                featured: true
-            },
-            {
-                name: '芋頭',
-                role: '社群小編',
-                image: 'images/headshot/taro.jpg',
-                description: '負責統測倒數限動，以溫暖短句鼓舞人心',
-                featured: true
-            },
-            {
-                name: '抹茶',
-                role: '社群小編',
-                image: 'images/headshot/matcha.jpg',
-                description: '負責倒數與問答限動，設計風格可愛又溫暖，擔任讀書會副主持',
-                featured: true
-            },
-            {
-                name: '奶昔',
-                role: '貼文企劃',
-                image: 'images/headshot/milkshake.jpg',
-                description: '協助發想貼文內容，涵蓋讀書心態與升學制度，就讀北科工設',
-                featured: true
-            },
-            {
-                name: '虹魚',
+                name: '魟魚',
                 role: '社群小編',
                 image: 'images/headshot/stingray.jpg',
                 description: '自創立以來擔任小編至今，精心製作英文測驗並創立化工讀書帳',
@@ -325,12 +297,12 @@ async function loadStudyGroups() {
         // 使用預設資料
         const defaultGroups = [
             {
-                "title": "每週共讀活動",
-                "date": "每週六",
-                "time": "19:00 - 21:00",
-                "location": "Discord 線上社群",
+                "title": "Discord 語音共讀室",
+                "date": "全天開放",
+                "time": "隨時進出",
+                "location": "Discord 語音頻道",
                 "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600",
-                "description": "主持人陪伴大家一起學習，溫暖互助的學習氛圍。隨時提出問題、解題討論，還可以小聊放鬆，讓學習不孤單"
+                "description": "語音頻道一直開著，想讀書就進來，不用等時間也不用報名。可以開麥討論題目，也可以靜音各讀各的，有人一起比較坐得住。"
             }
         ];
         displayStudyGroups(defaultGroups);
@@ -351,7 +323,7 @@ function displayStudyGroups(groups) {
             <div class="study-group-content">
                 <h3 class="study-group-title">${group.title}</h3>
                 <div class="study-group-date">
-                    <i class="fas fa-calendar"></i>
+                    <i class="fas fa-headset"></i>
                     ${group.date} ${group.time}
                 </div>
                 <p class="study-group-description">${group.description}</p>

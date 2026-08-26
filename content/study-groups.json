@@ -1,12 +1,12 @@
 {
   "groups": [
     {
-      "title": "每週共讀活動",
-      "date": "每週六或日",
-      "time": "19:00 - 21:00",
-      "location": "Discord 線上社群",
+      "title": "Discord 語音共讀室",
+      "date": "全天開放",
+      "time": "隨時進出",
+      "location": "Discord 語音頻道",
       "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600",
-      "description": "主持人陪伴大家一起學習，溫暖互助的學習氛圍。隨時提出問題、解題討論，還可以小聊放鬆，讓學習不孤單"
+      "description": "語音頻道一直開著，想讀書就進來，不用等時間也不用報名。可以開麥討論題目，也可以靜音各讀各的，有人一起比較坐得住。"
     }
   ]
 }

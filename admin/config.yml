@@ -52,20 +52,20 @@ collections:
               - {label: "Google Play 連結", name: "googlePlay", widget: "string"}
 
       # 讀書會管理
-      - label: "讀書會活動"
+      - label: "共讀室資訊"
         name: "study-groups"
         file: "content/study-groups.json"
         fields:
-          - label: "讀書會列表"
+          - label: "共讀室列表"
             name: "groups"
             widget: "list"
             fields:
               - {label: "標題", name: "title", widget: "string"}
-              - {label: "日期", name: "date", widget: "string", hint: "例如：每週六或日"}
-              - {label: "時間", name: "time", widget: "string", hint: "例如：19:00 - 21:00"}
+              - {label: "開放時段", name: "date", widget: "string", hint: "例如：全天開放"}
+              - {label: "參與方式", name: "time", widget: "string", hint: "例如：隨時進出"}
               - {label: "地點", name: "location", widget: "string"}
               - {label: "圖片網址", name: "image", widget: "string"}
-              - {label: "活動描述", name: "description", widget: "text"}
+              - {label: "說明文字", name: "description", widget: "text"}
 
       # Instagram 特色管理
       - label: "Instagram 特色"
