@@ -387,12 +387,8 @@ function displayAppSection(appData) {
 
     // 更新下載按鈕連結
     if (appData.downloads) {
-        const appStoreBtn = document.querySelector('.download-buttons a[href*="apps.apple.com"]');
         const googlePlayBtn = document.querySelector('.download-buttons a[href*="play.google.com"]');
 
-        if (appStoreBtn && appData.downloads.appStore) {
-            appStoreBtn.href = appData.downloads.appStore;
-        }
         if (googlePlayBtn && appData.downloads.googlePlay) {
             googlePlayBtn.href = appData.downloads.googlePlay;
         }
