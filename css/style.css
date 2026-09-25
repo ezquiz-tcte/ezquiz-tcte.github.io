@@ -533,6 +533,7 @@ body {
     display: flex;
     align-items: center;
     gap: 0.8rem;
+    width: 190px;
     padding: 12px 24px;
     background: var(--dark-color);
     color: white;
@@ -547,8 +548,25 @@ body {
     box-shadow: 0 10px 20px rgba(74, 144, 226, 0.3);
 }
 
+.download-btn.is-pending {
+    opacity: 0.6;
+    cursor: default;
+}
+
+.download-btn.is-pending:hover {
+    background: var(--dark-color);
+    transform: none;
+    box-shadow: none;
+}
+
 .download-btn i {
+    width: 2rem;
     font-size: 2rem;
+    text-align: center;
+}
+
+.download-btn .fa-google-play {
+    font-size: 1.7rem;
 }
 
 .download-btn small {

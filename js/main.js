@@ -387,13 +387,27 @@ function displayAppSection(appData) {
 
     // 更新下載按鈕連結
     if (appData.downloads) {
+        const appStoreBtn = document.getElementById('appStoreBtn');
         const googlePlayBtn = document.querySelector('.download-buttons a[href*="play.google.com"]');
 
+        if (appStoreBtn && appData.downloads.appStore) {
+            appStoreBtn.href = appData.downloads.appStore;
+            appStoreBtn.target = '_blank';
+            appStoreBtn.classList.remove('is-pending');
+            appStoreBtn.removeAttribute('aria-disabled');
+            appStoreBtn.removeAttribute('title');
+        }
         if (googlePlayBtn && appData.downloads.googlePlay) {
             googlePlayBtn.href = appData.downloads.googlePlay;
         }
     }
 }
+
+// App Store 連結尚未設定時，點擊按鈕不跳轉
+document.addEventListener('click', e => {
+    const btn = e.target.closest('#appStoreBtn.is-pending');
+    if (btn) e.preventDefault();
+});
 
 // 載入 Instagram 特色資料
 async function loadInstagramFeatures() {
