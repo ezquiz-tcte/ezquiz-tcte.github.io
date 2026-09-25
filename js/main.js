@@ -147,16 +147,9 @@ async function loadTeamData() {
         const defaultTeam = [
             {
                 name: '可樂貓',
-                role: '創辦人 & 安卓開發',
+                role: '創辦人 & App 開發',
                 image: 'images/headshot/shen.jpg',
                 description: '大學畢業後創立 EZQuiz 社群與 App，持續投入平台的維護與改進。',
-                featured: true
-            },
-            {
-                name: '咕嚕',
-                role: 'iOS 開發',
-                image: 'images/headshot/glue.jpg',
-                description: '負責 iOS 開發與新功能構思。目前就讀台科電機',
                 featured: true
             },
             {

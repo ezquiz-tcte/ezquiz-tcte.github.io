@@ -32,22 +32,12 @@ async function loadAllTeamMembers() {
         allTeamMembers = [
             {
                 name: '可樂貓',
-                role: '創辦人 & 安卓開發',
+                role: '創辦人 & App 開發',
                 category: ['leader', 'app-dev'],
                 image: 'images/headshot/shen.jpg',
                 description: '大學畢業後創立 EZQuiz 社群與 App，持續投入平台的維護與改進。',
                 instagram: '',
                 order: 1,
-                featured: true
-            },
-            {
-                name: '咕嚕',
-                role: 'iOS 開發',
-                category: 'app-dev',
-                image: 'images/headshot/glue.jpg',
-                description: '負責 iOS 開發與新功能構思。目前就讀台科電機',
-                instagram: '',
-                order: 2,
                 featured: true
             },
             {
@@ -57,7 +47,7 @@ async function loadAllTeamMembers() {
                 image: 'images/headshot/frog.jpg',
                 description: '負責測驗限動，以可愛風格呈現易懂的解析',
                 instagram: '',
-                order: 3,
+                order: 2,
                 featured: true
             },
             {
@@ -67,7 +57,7 @@ async function loadAllTeamMembers() {
                 image: 'images/headshot/stingray.jpg',
                 description: '自創立以來擔任小編至今，精心製作英文測驗並創立化工讀書帳',
                 instagram: '114study',
-                order: 4,
+                order: 3,
                 featured: true
             }
         ];
