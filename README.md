@@ -1,6 +1,6 @@
 # EZQuiz 學習平台
 
-一個現代化的學習平台網站，整合 Decap CMS 後台管理系統，可以輕鬆管理網站內容。
+EZQuiz 學習平台的官方網站，內容存放在 `content/` 下的 JSON 檔案。
 
 ## 🌟 功能特色
 
@@ -8,7 +8,6 @@
 - 🎨 現代化的 UI/UX 設計
 - 🖼️ 動態輪播圖管理
 - 👥 團隊成員管理
-- 📝 Decap CMS 後台管理系統
 - 🚀 可直接部署到 GitHub Pages
 
 ## 📁 專案結構
@@ -20,9 +19,6 @@ web/
 │   └── style.css          # 樣式表
 ├── js/
 │   └── main.js            # JavaScript 功能
-├── admin/
-│   ├── index.html         # Decap CMS 後台入口
-│   └── config.yml         # CMS 配置檔案
 ├── content/
 │   ├── slider.json        # 輪播圖內容
 │   ├── team.json          # 團隊成員資料
@@ -63,46 +59,6 @@ git push -u origin main
 4. 點擊 **Save**
 5. 等待幾分鐘後，你的網站會在 `https://你的使用者名稱.github.io/你的repository名稱/` 上線
 
-### 3. 設定 Netlify Identity（用於 Decap CMS 登入）
-
-Decap CMS 需要身份驗證系統，推薦使用 Netlify Identity：
-
-#### 方法 A：使用 Netlify 部署（推薦）
-
-1. 註冊 [Netlify](https://www.netlify.com/) 帳號
-2. 點擊 "New site from Git"
-3. 連接你的 GitHub repository
-4. 部署設定保持預設即可
-5. 部署完成後，進入 **Site settings** → **Identity**
-6. 點擊 **Enable Identity**
-7. 在 **Registration preferences** 選擇 "Invite only"
-8. 在 **Services** → **Git Gateway** 點擊 **Enable Git Gateway**
-9. 回到你的網站，訪問 `/admin/` 進行註冊和登入
-
-#### 方法 B：GitHub Pages + Netlify Identity
-
-如果你想使用 GitHub Pages 作為主網站，但使用 Netlify Identity 認證：
-
-1. 在 Netlify 建立一個空網站
-2. 啟用 Identity 和 Git Gateway（同上）
-3. 在 `index.html` 的 `<head>` 中添加：
-
-```html
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-```
-
-4. 在 `admin/config.yml` 中設定正確的 backend
-
-### 4. 使用 Decap CMS 後台
-
-1. 訪問 `你的網站URL/admin/`
-2. 使用 Netlify Identity 登入
-3. 現在可以在後台管理：
-   - 📸 輪播圖片
-   - 👥 團隊成員
-   - ⚙️ 網站設定
-   - ✨ 平台特色
-
 ## 📝 本地開發
 
 ### 1. 直接開啟 HTML
@@ -123,20 +79,6 @@ npx http-server
 
 然後訪問 `http://localhost:8000`
 
-### 3. 本地測試 Decap CMS
-
-在 `admin/config.yml` 中取消註解：
-
-```yaml
-local_backend: true
-```
-
-然後執行：
-
-```bash
-npx decap-server
-```
-
 ## 🎨 自訂網站
 
 ### 修改顏色主題
@@ -154,13 +96,11 @@ npx decap-server
 
 ### 修改內容
 
-#### 使用 Decap CMS 後台（推薦）
-訪問 `/admin/` 使用圖形化界面編輯內容
-
-#### 直接編輯 JSON 檔案
+直接編輯 JSON 檔案：
 - `content/slider.json` - 輪播圖內容
 - `content/team.json` - 團隊成員
 - `content/settings/site.json` - 網站資訊
+- `content/app.json` - App 介紹與下載連結（`downloads.appStore` 填入後，首頁的 App Store 按鈕會自動啟用）
 
 ## 🔧 進階設定
 
