@@ -6,7 +6,7 @@ EZQuiz 學習平台的官方網站，內容存放在 `content/` 下的 JSON 檔�
 
 - ✨ 響應式設計，支援各種裝置
 - 🎨 現代化的 UI/UX 設計
-- 🖼️ 動態輪播圖管理
+- 🖼️ App 功能介紹（GSAP 捲動動畫）
 - 👥 團隊成員管理
 - 🚀 可直接部署到 GitHub Pages
 
@@ -18,14 +18,18 @@ web/
 ├── css/
 │   └── style.css          # 樣式表
 ├── js/
-│   └── main.js            # JavaScript 功能
+│   ├── main.js            # 首頁功能與 GSAP 動畫
+│   └── team.js            # 團隊成員頁
 ├── content/
-│   ├── slider.json        # 輪播圖內容
+│   ├── app.json           # App 介紹、功能截圖與下載連結
+│   ├── study-groups.json  # Discord 共讀室
+│   ├── instagram-features.json # Instagram 介紹
 │   ├── team.json          # 團隊成員資料
 │   └── settings/
-│       └── site.json      # 網站設定
+│       └── site-info.json # 網站設定
 ├── images/
-│   └── uploads/           # 上傳的圖片儲存位置
+│   ├── app/               # App 截圖（WebP，寬 660px）
+│   └── headshot/          # 成員頭像
 └── README.md
 ```
 
@@ -87,20 +91,22 @@ npx http-server
 
 ```css
 :root {
-    --primary-color: #4A90E2;      /* 主要顏色 */
-    --secondary-color: #50E3C2;    /* 次要顏色 */
-    --dark-color: #2C3E50;         /* 深色 */
-    --light-color: #F8F9FA;        /* 淺色 */
+    --bg: #f4f4f2;          /* 頁面底色 */
+    --ink: #2b2b2a;         /* 標題與主按鈕 */
+    --accent: #3f7a32;      /* 唯一強調色（葉綠） */
+    --accent-soft: #d3e2a9; /* 淺綠，對應 App 的正解標示 */
 }
 ```
+
+深色模式的對應值在同一檔案的 `@media (prefers-color-scheme: dark)` 區塊。
 
 ### 修改內容
 
 直接編輯 JSON 檔案：
-- `content/slider.json` - 輪播圖內容
+- `content/app.json` - App 功能介紹：每個 `features` 項目有標題、說明與截圖路徑
 - `content/team.json` - 團隊成員
-- `content/settings/site.json` - 網站資訊
-- `content/app.json` - App 介紹與下載連結（`downloads.appStore` 填入後，首頁的 App Store 按鈕會自動啟用）
+- `content/settings/site-info.json` - 網站資訊
+- `content/app.json` 的 `downloads.appStore` 填入後，首頁的 App Store 按鈕會自動啟用
 
 ## 🔧 進階設定
 

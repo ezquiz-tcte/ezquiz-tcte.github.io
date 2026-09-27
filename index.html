@@ -6,210 +6,176 @@
     <title>EZQuiz 學習平台 - 讓學習變得更簡單</title>
     <meta name="description" content="EZQuiz 提供乾淨簡潔的學習介面，支援統測國文、英文、數學練習。Discord 語音共讀室全天開放，隨時可以進來一起讀書。">
     <meta name="keywords" content="統測,學習平台,EZQuiz,國文,英文,數學,讀書會,共讀,Discord,語音自習">
-    <link rel="stylesheet" href="css/style.css">
+    <meta name="theme-color" content="#f4f4f2">
+    <meta property="og:title" content="EZ統測練習 - 統測刷題，一次 10 題">
+    <meta property="og:description" content="國文、英文、數學與專業科目，每題都有解析。不用註冊，免費使用。">
+    <meta property="og:image" content="images/app/home.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Outfit:wght@400;500;600;700;800&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <a class="skip-link" href="#main">跳到主要內容</a>
+
     <!-- 導航欄 -->
     <nav class="navbar">
         <div class="container">
-            <div class="logo">
-                <h1 id="siteName">EZQuiz</h1>
-            </div>
+            <a class="logo" href="index.html">
+                <span id="siteName">EZQuiz</span>
+            </a>
             <ul class="nav-menu">
-                <li><a href="index.html">首頁</a></li>
                 <li><a href="#app">APP</a></li>
                 <li><a href="#study-group">共讀室</a></li>
                 <li><a href="#instagram">Instagram</a></li>
-                <li><a href="team.html">團隊成員</a></li>
+                <li><a href="#download" class="nav-cta">下載 App</a></li>
             </ul>
-            <div class="hamburger">
+            <button class="hamburger" type="button" aria-label="開啟選單" aria-expanded="false">
                 <span></span>
                 <span></span>
-                <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
-    <!-- Hero Section with Slider -->
-    <section id="home" class="hero-section">
-        <div class="slider-container">
-            <div class="slider" id="heroSlider">
-                <!-- Slides will be loaded from content/slider.json -->
-            </div>
-            <button class="slider-btn prev" onclick="changeSlide(-1)">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button class="slider-btn next" onclick="changeSlide(1)">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-            <div class="slider-dots" id="sliderDots"></div>
-        </div>
-    </section>
-
-    <!-- APP 介紹 -->
-    <section id="app" class="app-section">
-        <div class="container">
-            <h2 class="section-title">EZQuiz APP</h2>
-            <div class="app-content">
-                <div class="app-image">
-                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800" alt="EZQuiz APP" id="appImage">
+    <main id="main">
+        <!-- Hero -->
+        <section id="home" class="hero">
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <p class="eyebrow" data-hero>四技二專統測練習</p>
+                    <h1 data-hero>統測刷題，<br>一次 10 題就好</h1>
+                    <p class="hero-sub" data-hero>國文、英文、數學與專業科目，每題都有解析。<br class="br-wide">不用註冊，免費使用。</p>
+                    <div class="download-buttons" data-hero>
+                        <a href="https://play.google.com/store/apps/details?id=com.ezquiz.tcteking" target="_blank" rel="noopener" class="store-btn" data-store="googlePlay">
+                            <i class="fab fa-google-play"></i>
+                            <span><small>Get it on</small><strong>Google Play</strong></span>
+                        </a>
+                        <a href="#" class="store-btn store-btn--ghost is-pending" data-store="appStore" aria-disabled="true" title="即將推出">
+                            <i class="fab fa-apple"></i>
+                            <span><small>即將推出</small><strong>App Store</strong></span>
+                        </a>
+                    </div>
                 </div>
-                <div class="app-info">
-                    <h3>介面乾淨清爽，無壓力學習</h3>
+                <div class="hero-visual" aria-hidden="true">
+                    <div class="phone phone--back">
+                        <img src="images/app/ranking.webp" alt="" width="330" height="717">
+                    </div>
+                    <div class="phone phone--front">
+                        <img src="images/app/home.webp" alt="" width="330" height="717" fetchpriority="high">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- APP 功能介紹 -->
+        <section id="app" class="tour">
+            <div class="container">
+                <header class="section-head" data-reveal>
+                    <h2 id="appTitle">介面乾淨清爽，無壓力學習</h2>
                     <p id="appDescription">EZQuiz APP 設計簡潔，每次只需完成 10 題，輕鬆無壓力。全科目皆提供詳細解析，幫助你徹底理解每一題。</p>
-                    <div class="app-features">
-                        <div class="app-feature-item">
-                            <i class="fas fa-list-ol"></i>
-                            <span>快速刷題</span>
+                </header>
+                <div class="tour-body">
+                    <ol class="tour-steps" id="tourSteps">
+                        <li class="tour-step">
+                            <h3>每題都有解析</h3>
+                            <p>作答後馬上看解析，說明題目在考什麼、正解為什麼成立。</p>
+                            <figure class="tour-shot"><img src="images/app/explanation.webp" alt="國文題目作答後顯示正解與解析的畫面" width="330" height="717" loading="lazy"></figure>
+                        </li>
+                        <li class="tour-step">
+                            <h3>題目下方就是計算紙</h3>
+                            <p>數學題可以直接在題目下方手寫計算，擦掉、復原都在同一排按鈕。</p>
+                            <figure class="tour-shot"><img src="images/app/scratch.webp" alt="數學題下方的手寫計算紙" width="330" height="717" loading="lazy"></figure>
+                        </li>
+                        <li class="tour-step">
+                            <h3>錯題依題型統計</h3>
+                            <p>每科答錯的題目按題型分類，一眼看出哪一類最常錯，再到首頁的錯題複習重練。</p>
+                            <figure class="tour-shot"><img src="images/app/analysis.webp" alt="國文與英文依題型統計錯題數的長條圖" width="330" height="717" loading="lazy"></figure>
+                        </li>
+                        <li class="tour-step">
+                            <h3>和同類群考生比進度</h3>
+                            <p>答對 1 題得 1 分，全對再加 5 分，每月 1 日重新計算。不想上榜可以在設定裡關掉。</p>
+                            <figure class="tour-shot"><img src="images/app/ranking.webp" alt="資電類本月排行榜" width="330" height="717" loading="lazy"></figure>
+                        </li>
+                    </ol>
+                    <div class="tour-stage" aria-hidden="true">
+                        <div class="phone phone--stage">
+                            <div class="phone-screens" id="tourScreens"></div>
                         </div>
-                        <div class="app-feature-item">
-                            <i class="fas fa-book-open"></i>
-                            <span>詳細解析</span>
-                        </div>
-                        <div class="app-feature-item">
-                            <i class="fas fa-paint-brush"></i>
-                            <span>介面清爽</span>
-                        </div>
-                        <div class="app-feature-item">
-                            <i class="fas fa-gift"></i>
-                            <span>免費使用</span>
-                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 下載 -->
+        <section id="download" class="download">
+            <div class="container">
+                <div class="download-panel" data-reveal>
+                    <div class="download-copy">
+                        <h2>下載 EZ統測練習</h2>
+                        <p>打開就能練，不用建立帳號。</p>
                     </div>
                     <div class="download-buttons">
-                        <a href="#" id="appStoreBtn" class="download-btn is-pending" aria-disabled="true" title="即將推出">
-                            <i class="fab fa-apple"></i>
-                            <div>
-                                <small>Get it on</small>
-                                <strong>App Store</strong>
-                            </div>
-                        </a>
-                        <a href="https://play.google.com/store/apps/details?id=com.ezquiz.tcteking" target="_blank" class="download-btn">
+                        <a href="https://play.google.com/store/apps/details?id=com.ezquiz.tcteking" target="_blank" rel="noopener" class="store-btn store-btn--light" data-store="googlePlay">
                             <i class="fab fa-google-play"></i>
-                            <div>
-                                <small>Get it on</small>
-                                <strong>Google Play</strong>
-                            </div>
+                            <span><small>Get it on</small><strong>Google Play</strong></span>
+                        </a>
+                        <a href="#" class="store-btn store-btn--light-ghost is-pending" data-store="appStore" aria-disabled="true" title="即將推出">
+                            <i class="fab fa-apple"></i>
+                            <span><small>即將推出</small><strong>App Store</strong></span>
                         </a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Discord 語音共讀室 -->
-    <section id="study-group" class="study-group-section">
-        <div class="container">
-            <h2 class="section-title">Discord 語音共讀室</h2>
-            <p class="section-subtitle">語音頻道全天開放，同學隨時可以進來一起讀</p>
-            <div class="study-group-grid" id="studyGroupGrid">
-                <!-- Study groups will be loaded from content/study-groups.json -->
-            </div>
-            <div class="text-center mt-4">
-                <a href="https://discord.com/invite/ag7NzXTNBA" target="_blank" class="btn-primary">
-                    <i class="fab fa-discord"></i> 進入 Discord 語音共讀室
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Instagram 介紹 -->
-    <section id="instagram" class="instagram-section">
-        <div class="container">
-            <h2 class="section-title">
-                <i class="fab fa-instagram"></i> Instagram 社群
-            </h2>
-            <p class="section-subtitle">加入我們的 Instagram，掌握最新學習動態</p>
-            
-            <div class="instagram-features">
-                <div class="instagram-feature-card">
-                    <div class="instagram-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3>每日限時動態</h3>
-                    <ul>
-                        <li><i class="fas fa-check"></i> 統測倒數計時</li>
-                        <li><i class="fas fa-check"></i> 問答互動</li>
-                        <li><i class="fas fa-check"></i> 英文每日測驗</li>
-                    </ul>
-                </div>
-                
-                <div class="instagram-feature-card">
-                    <div class="instagram-icon">
-                        <i class="fas fa-images"></i>
-                    </div>
-                    <h3>精選貼文分享</h3>
-                    <ul>
-                        <li><i class="fas fa-check"></i> 學習技巧與心得</li>
-                        <li><i class="fas fa-check"></i> 統測考試重點</li>
-                        <li><i class="fas fa-check"></i> 專業知識分享</li>
-                        <li><i class="fas fa-check"></i> APP 功能更新</li>
-                    </ul>
+        <!-- 社群：Discord 共讀室與 Instagram -->
+        <section class="community">
+            <div class="container">
+                <h2 class="community-title" data-reveal>一起準備統測</h2>
+                <div class="community-grid">
+                    <article id="study-group" class="community-card" data-reveal>
+                        <div class="community-icon"><i class="fab fa-discord"></i></div>
+                        <h3 id="studyGroupTitle">Discord 語音共讀室</h3>
+                        <p id="studyGroupDescription">語音頻道一直開著，想讀書就進來，不用等時間也不用報名。可以開麥討論題目，也可以靜音各讀各的。</p>
+                        <a href="https://discord.com/invite/ag7NzXTNBA" target="_blank" rel="noopener" class="text-link" id="discordLink">進入共讀室 <i class="fas fa-arrow-right"></i></a>
+                    </article>
+                    <article id="instagram" class="community-card" data-reveal>
+                        <div class="community-icon"><i class="fab fa-instagram"></i></div>
+                        <h3 id="igTitle">Instagram 社群</h3>
+                        <p id="igDescription">每日限動有統測倒數、問答互動與英文每日測驗，貼文分享學習技巧與考試重點。</p>
+                        <a href="https://www.instagram.com/ezquiz.tcte/" target="_blank" rel="noopener" class="text-link" id="igLink">追蹤 @ezquiz.tcte <i class="fas fa-arrow-right"></i></a>
+                    </article>
                 </div>
             </div>
-            
-            <div class="text-center mt-4">
-                <a href="https://www.instagram.com/ezquiz.tcte/" target="_blank" class="btn-primary btn-instagram">
-                    <i class="fab fa-instagram"></i> 追蹤 @ezquiz.tcte
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- 核心團隊成員（首頁精選） -->
-    <section id="team" class="team-preview-section">
-        <div class="container">
-            <h2 class="section-title">核心團隊</h2>
-            <p class="section-subtitle">認識我們的核心成員</p>
-            <div class="team-carousel-container">
-                <button class="carousel-btn prev-btn" id="teamPrevBtn" onclick="changeTeamSlide(-1)">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <div class="team-carousel-wrapper">
-                    <div class="team-carousel" id="teamCarousel">
-                        <!-- Featured team members will be loaded from content/team.json -->
-                    </div>
-                </div>
-                <button class="carousel-btn next-btn" id="teamNextBtn" onclick="changeTeamSlide(1)">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-            <div class="text-center mt-4">
-                <a href="team.html" class="btn-primary">查看所有成員</a>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3 id="footerSiteName">EZQuiz</h3>
-                    <p id="footerTagline">讓學習變得更簡單，讓知識變得更有趣</p>
-                </div>
-                <div class="footer-section">
-                    <h4>快速連結</h4>
-                    <ul>
-                        <li><a href="index.html">首頁</a></li>
-                        <li><a href="#app">APP</a></li>
-                        <li><a href="#study-group">共讀室</a></li>
-                        <li><a href="team.html">團隊成員</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>追蹤我們</h4>
-                    <div class="social-links" id="footerSocialLinks">
-                        <a href="https://www.instagram.com/ezquiz.tcte/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <span class="footer-logo" id="footerSiteName">EZQuiz</span>
+                <p id="footerTagline">讓學習變得更簡單</p>
             </div>
-            <div class="footer-bottom">
-                <p id="copyrightText">&copy; 2026 EZQuiz. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#app">APP</a></li>
+                <li><a href="#study-group">共讀室</a></li>
+                <li><a href="team.html">團隊成員</a></li>
+                <li><a href="privacy-policy.html">隱私權政策</a></li>
+            </ul>
+            <div class="social-links" id="footerSocialLinks">
+                <a href="https://www.instagram.com/ezquiz.tcte/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://discord.com/invite/ag7NzXTNBA" target="_blank" rel="noopener" aria-label="Discord"><i class="fab fa-discord"></i></a>
             </div>
+        </div>
+        <div class="container footer-bottom">
+            <p id="copyrightText">&copy; 2026 EZQuiz. All rights reserved.</p>
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

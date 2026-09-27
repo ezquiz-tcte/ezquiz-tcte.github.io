@@ -52,8 +52,8 @@
     },
     {
       "name": "抹茶",
-      "role": "前設計 & 前社群小編",
-      "category": ["alumni", "community", "design"],
+      "role": "前設計",
+      "category": ["alumni", "design"],
       "image": "images/headshot/matcha.jpg",
       "description": "曾負責成員頭像設計，並協助社群限動，風格可愛又溫暖",
       "instagram": "",
@@ -92,10 +92,10 @@
     },
     {
       "name": "松鼠",
-      "role": "前網頁設計 & 前讀書會主持",
-      "category": ["alumni", "design", "host"],
+      "role": "前讀書會主持",
+      "category": ["alumni", "host"],
       "image": "images/headshot/squirrel.jpg",
-      "description": "曾協助設計網頁 UI，並擔任 114 讀書會主持，幽默風趣又溫暖",
+      "description": "曾擔任 114 讀書會主持，並協助設計網頁 UI，幽默風趣又溫暖",
       "instagram": "monkeyeeeeeeeeeee",
       "order": 10,
       "featured": false
@@ -225,7 +225,7 @@
       "role": "前設計",
       "category": ["alumni", "design"],
       "image": "",
-      "description": "曾擔任限動與貼文版面設計，設計的模板至今仍在沿用",
+      "description": "曾擔任限動與貼文版面設計",
       "instagram": "",
       "order": 23,
       "featured": false

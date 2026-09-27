@@ -2,339 +2,35 @@
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
+function setMenu(open) {
+    navMenu.classList.toggle('active', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+}
+
 hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
+    setMenu(!navMenu.classList.contains('active'));
 });
 
 // 點擊導航連結後關閉選單
 document.querySelectorAll('.nav-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-    });
+    link.addEventListener('click', () => setMenu(false));
 });
 
-// Slider 功能
-let currentSlide = 0;
-let slides = [];
-let autoSlideInterval;
-
-// 載入 slider 資料
-async function loadSliderData() {
-    try {
-        const response = await fetch('content/slider.json');
-        const data = await response.json();
-        slides = data.slides;
-        initializeSlider();
-        startAutoSlide();
-    } catch (error) {
-        console.error('Error loading slider data:', error);
-        // 使用預設 slides
-        slides = [
-            {
-                "title": "EZQuiz APP",
-                "description": "在手機上學習、隨時練習。支援 iOS / Android",
-                "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1600",
-                "buttonText": "前往 APP 介紹",
-                "buttonLink": "#app"
-            },
-            {
-                "title": "Discord 語音共讀室",
-                "description": "語音頻道全天開放，隨時進來一起讀，開麥討論或靜音自習都可以。",
-                "image": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=1600",
-                "buttonText": "進入語音共讀",
-                "buttonLink": "https://discord.com/invite/ag7NzXTNBA"
-            },
-            {
-                "title": "IG 每日限動 & 精選貼文",
-                "description": "分享學習、統測與 APP 相關內容",
-                "image": "https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=1600",
-                "buttonText": "追蹤我們",
-                "buttonLink": "https://www.instagram.com/ezquiz.tcte/"
-            },
-            {
-                "title": "加入我們的團隊",
-                "description": "若你想一起打造更好的學習平台，歡迎加入 EZQuiz 團隊！",
-                "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1600",
-                "buttonText": "查看團隊",
-                "buttonLink": "#team"
-            }
-        ];
-        initializeSlider();
-        startAutoSlide();
-    }
-}
-
-function initializeSlider() {
-    const sliderContainer = document.getElementById('heroSlider');
-    const dotsContainer = document.getElementById('sliderDots');
-    
-    sliderContainer.innerHTML = '';
-    dotsContainer.innerHTML = '';
-    
-    slides.forEach((slide, index) => {
-        // 創建 slide
-        const slideDiv = document.createElement('div');
-        slideDiv.className = 'slide';
-        slideDiv.style.backgroundImage = `url(${slide.image})`;
-        slideDiv.innerHTML = `
-            <div class="slide-content">
-                <h2>${slide.title}</h2>
-                <p>${slide.description}</p>
-                <a href="${slide.buttonLink}" class="btn-primary">${slide.buttonText}</a>
-            </div>
-        `;
-        sliderContainer.appendChild(slideDiv);
-        
-        // 創建 dot
-        const dot = document.createElement('span');
-        dot.className = 'dot';
-        if (index === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => goToSlide(index));
-        dotsContainer.appendChild(dot);
-    });
-}
-
-function changeSlide(direction) {
-    currentSlide += direction;
-    if (currentSlide >= slides.length) currentSlide = 0;
-    if (currentSlide < 0) currentSlide = slides.length - 1;
-    updateSlider();
-    resetAutoSlide();
-}
-
-function goToSlide(index) {
-    currentSlide = index;
-    updateSlider();
-    resetAutoSlide();
-}
-
-function updateSlider() {
-    const slider = document.getElementById('heroSlider');
-    const dots = document.querySelectorAll('.dot');
-    
-    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-    
-    dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentSlide);
-    });
-}
-
-function startAutoSlide() {
-    autoSlideInterval = setInterval(() => {
-        changeSlide(1);
-    }, 5000);
-}
-
-function resetAutoSlide() {
-    clearInterval(autoSlideInterval);
-    startAutoSlide();
-}
-
-// 載入團隊資料（首頁精選）
-let currentTeamSlide = 0;
-let allFeaturedMembers = [];
-
-async function loadTeamData() {
-    try {
-        const response = await fetch('content/team.json');
-        const data = await response.json();
-        // 顯示所有 featured 成員
-        allFeaturedMembers = data.team.filter(member => member.featured);
-        displayTeamCarousel(allFeaturedMembers.length > 0 ? allFeaturedMembers : data.team.slice(0, 8));
-    } catch (error) {
-        console.error('Error loading team data:', error);
-        // 使用預設團隊資料
-        const defaultTeam = [
-            {
-                name: '可樂貓',
-                role: '創辦人 & App 開發',
-                image: 'images/headshot/shen.jpg',
-                description: '大學畢業後創立 EZQuiz 社群與 App，持續投入平台的維護與改進。',
-                featured: true
-            },
-            {
-                name: '青蛙',
-                role: '社群小編',
-                image: 'images/headshot/frog.jpg',
-                description: '負責測驗限動，以可愛風格呈現易懂的解析',
-                featured: true
-            },
-            {
-                name: '魟魚',
-                role: '社群小編',
-                image: 'images/headshot/stingray.jpg',
-                description: '自創立以來擔任小編至今，精心製作英文測驗並創立化工讀書帳',
-                featured: true
-            }
-        ];
-        allFeaturedMembers = defaultTeam;
-        displayTeamCarousel(defaultTeam);
-    }
-}
-
-function displayTeamCarousel(teamMembers) {
-    const teamCarousel = document.getElementById('teamCarousel');
-    if (!teamCarousel) return;
-    
-    teamCarousel.innerHTML = '';
-    
-    teamMembers.forEach(member => {
-        const memberDiv = document.createElement('div');
-        memberDiv.className = 'team-member-slide';
-        const imageUrl = member.image || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(member.name) + '&size=300&background=667eea&color=fff';
-        memberDiv.innerHTML = `
-            <img src="${imageUrl}" alt="${member.name}" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&size=300&background=667eea&color=fff'">
-            <h3>${member.name}</h3>
-            <div class="role">${member.role}</div>
-            <p>${member.description}</p>
-        `;
-        teamCarousel.appendChild(memberDiv);
-    });
-    
-    currentTeamSlide = 0;
-    teamCarousel.style.transform = 'translateX(0px)';
-    updateTeamCarousel();
-}
-
-function changeTeamSlide(direction) {
-    const visibleSlides = getVisibleSlides();
-    const maxSlide = Math.max(0, allFeaturedMembers.length - visibleSlides);
-    
-    currentTeamSlide += direction;
-    if (currentTeamSlide > maxSlide) currentTeamSlide = maxSlide;
-    if (currentTeamSlide < 0) currentTeamSlide = 0;
-    
-    updateTeamCarousel();
-}
-
-function getVisibleSlides() {
-    const width = window.innerWidth;
-    if (width >= 1200) return 4;
-    if (width >= 768) return 3;
-    if (width >= 480) return 2;
-    return 1;
-}
-
-function updateTeamCarousel() {
-    const teamCarousel = document.getElementById('teamCarousel');
-    const prevBtn = document.getElementById('teamPrevBtn');
-    const nextBtn = document.getElementById('teamNextBtn');
-    
-    if (!teamCarousel) return;
-
-    const slides = teamCarousel.querySelectorAll('.team-member-slide');
-    if (!slides.length) return;
-
-    const visibleSlides = getVisibleSlides();
-    const maxSlide = Math.max(0, slides.length - visibleSlides);
-    if (currentTeamSlide > maxSlide) currentTeamSlide = maxSlide;
-    if (currentTeamSlide < 0) currentTeamSlide = 0;
-
-    // 視窗（可視區）通常是 track 的 parentElement
-    const viewport = teamCarousel.parentElement || document.documentElement;
-    const item = slides[currentTeamSlide];
-
-    // 計算要移動的像素值 (item.offsetLeft 為 item 在 track 的左偏移)
-    let offsetPx = item.offsetLeft;
-
-    // 若僅顯示 1 個卡片時要將卡片置中，避免卡片被截邊
-    if (visibleSlides === 1) {
-        offsetPx -= (viewport.clientWidth - item.offsetWidth) / 2;
-    }
-
-    // 限制最大、最小位移，避免移動過頭導致空白或被截
-    const maxOffset = Math.max(0, teamCarousel.scrollWidth - viewport.clientWidth);
-    if (offsetPx < 0) offsetPx = 0;
-    if (offsetPx > maxOffset) offsetPx = maxOffset;
-
-    teamCarousel.style.transform = `translateX(${-Math.round(offsetPx)}px)`;
-
-    // 更新按鈕狀態
-    if (prevBtn) prevBtn.disabled = currentTeamSlide === 0;
-    if (nextBtn) nextBtn.disabled = currentTeamSlide >= maxSlide;
-}
-
-// 監聽視窗大小變化
-window.addEventListener('resize', () => {
-    const visibleSlides = getVisibleSlides();
-    const maxSlide = Math.max(0, allFeaturedMembers.length - visibleSlides);
-    if (currentTeamSlide > maxSlide) {
-        currentTeamSlide = maxSlide;
-    }
-    updateTeamCarousel();
+// App Store 連結尚未設定時，點擊按鈕不跳轉
+document.addEventListener('click', e => {
+    if (e.target.closest('.store-btn.is-pending')) e.preventDefault();
 });
 
-function displayTeamPreview(teamMembers) {
-    // 保留舊函數以防其他地方使用
-    displayTeamCarousel(teamMembers);
-}
-
-// 表單提交
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('感謝您的訊息！我們會盡快與您聯繫。');
-        e.target.reset();
-    });
-}
-
-// 載入讀書會資料
-async function loadStudyGroups() {
-    try {
-        const response = await fetch('content/study-groups.json');
-        const data = await response.json();
-        displayStudyGroups(data.groups.slice(0, 3)); // 只顯示前 3 個
-    } catch (error) {
-        console.error('Error loading study groups:', error);
-        // 使用預設資料
-        const defaultGroups = [
-            {
-                "title": "Discord 語音共讀室",
-                "date": "全天開放",
-                "time": "隨時進出",
-                "location": "Discord 語音頻道",
-                "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600",
-                "description": "語音頻道一直開著，想讀書就進來，不用等時間也不用報名。可以開麥討論題目，也可以靜音各讀各的，有人一起比較坐得住。"
-            }
-        ];
-        displayStudyGroups(defaultGroups);
-    }
-}
-
-function displayStudyGroups(groups) {
-    const groupsGrid = document.getElementById('studyGroupGrid');
-    if (!groupsGrid) return;
-    
-    groupsGrid.innerHTML = '';
-    
-    groups.forEach(group => {
-        const groupDiv = document.createElement('div');
-        groupDiv.className = 'study-group-card';
-        groupDiv.innerHTML = `
-            <img src="${group.image}" alt="${group.title}" class="study-group-image">
-            <div class="study-group-content">
-                <h3 class="study-group-title">${group.title}</h3>
-                <div class="study-group-date">
-                    <i class="fas fa-headset"></i>
-                    ${group.date} ${group.time}
-                </div>
-                <p class="study-group-description">${group.description}</p>
-                <div class="study-group-meta">
-                    <span><i class="fas fa-map-marker-alt"></i> ${group.location}</span>
-                </div>
-            </div>
-        `;
-        groupsGrid.appendChild(groupDiv);
-    });
+async function fetchJson(path) {
+    const response = await fetch(path);
+    if (!response.ok) throw new Error(`${path}: ${response.status}`);
+    return response.json();
 }
 
 // 載入 APP 資料
 async function loadAppData() {
     try {
-        const response = await fetch('content/app.json');
-        const data = await response.json();
-        displayAppSection(data);
+        displayAppSection(await fetchJson('content/app.json'));
     } catch (error) {
         console.error('Error loading app data:', error);
         // 保持 HTML 中的預設內容
@@ -342,230 +38,219 @@ async function loadAppData() {
 }
 
 function displayAppSection(appData) {
-    // 更新 APP 圖片
-    const appImage = document.getElementById('appImage');
-    if (appImage && appData.image) {
-        appImage.src = appData.image;
-        appImage.alt = appData.title;
-    }
+    const appTitle = document.getElementById('appTitle');
+    if (appTitle && appData.subtitle) appTitle.textContent = appData.subtitle;
 
-    // 更新 APP 標題
-    const appTitle = document.querySelector('.app-info h3');
-    if (appTitle && appData.subtitle) {
-        appTitle.textContent = appData.subtitle;
-    }
-
-    // 更新 APP 描述
     const appDescription = document.getElementById('appDescription');
-    if (appDescription && appData.description) {
-        appDescription.textContent = appData.description;
+    if (appDescription && appData.description) appDescription.textContent = appData.description;
+
+    const steps = document.getElementById('tourSteps');
+    if (steps && appData.features && appData.features.length > 0) {
+        steps.innerHTML = appData.features.map(feature => `
+            <li class="tour-step">
+                <h3>${feature.title}</h3>
+                <p>${feature.text}</p>
+                <figure class="tour-shot"><img src="${feature.image}" alt="${feature.alt || feature.title}" width="330" height="717" loading="lazy"></figure>
+            </li>
+        `).join('');
     }
 
-    // 更新 APP 特色
-    if (appData.features && appData.features.length > 0) {
-        const featuresContainer = document.querySelector('.app-features');
-        if (featuresContainer) {
-            featuresContainer.innerHTML = '';
-            appData.features.forEach(feature => {
-                const featureDiv = document.createElement('div');
-                featureDiv.className = 'app-feature-item';
-                featureDiv.innerHTML = `
-                    <i class="${feature.icon}"></i>
-                    <span>${feature.text}</span>
-                `;
-                featuresContainer.appendChild(featureDiv);
-            });
-        }
-    }
-
-    // 更新下載按鈕連結
     if (appData.downloads) {
-        const appStoreBtn = document.getElementById('appStoreBtn');
-        const googlePlayBtn = document.querySelector('.download-buttons a[href*="play.google.com"]');
-
-        if (appStoreBtn && appData.downloads.appStore) {
-            appStoreBtn.href = appData.downloads.appStore;
-            appStoreBtn.target = '_blank';
-            appStoreBtn.classList.remove('is-pending');
-            appStoreBtn.removeAttribute('aria-disabled');
-            appStoreBtn.removeAttribute('title');
-        }
-        if (googlePlayBtn && appData.downloads.googlePlay) {
-            googlePlayBtn.href = appData.downloads.googlePlay;
-        }
+        document.querySelectorAll('[data-store]').forEach(btn => {
+            const url = appData.downloads[btn.dataset.store];
+            if (!url) return;
+            btn.href = url;
+            btn.target = '_blank';
+            btn.rel = 'noopener';
+            btn.classList.remove('is-pending');
+            btn.removeAttribute('aria-disabled');
+            btn.removeAttribute('title');
+            const label = btn.querySelector('small');
+            if (label) label.textContent = btn.dataset.store === 'appStore' ? 'Download on the' : 'Get it on';
+        });
     }
 }
 
-// App Store 連結尚未設定時，點擊按鈕不跳轉
-document.addEventListener('click', e => {
-    const btn = e.target.closest('#appStoreBtn.is-pending');
-    if (btn) e.preventDefault();
-});
-
-// 載入 Instagram 特色資料
-async function loadInstagramFeatures() {
+// 載入 Discord 共讀室資料
+async function loadStudyGroups() {
     try {
-        const response = await fetch('content/instagram-features.json');
-        const data = await response.json();
-        displayInstagramFeatures(data);
+        const data = await fetchJson('content/study-groups.json');
+        const group = data.groups && data.groups[0];
+        if (!group) return;
+        if (group.title) document.getElementById('studyGroupTitle').textContent = group.title;
+        if (group.description) document.getElementById('studyGroupDescription').textContent = group.description;
+        if (group.link) document.getElementById('discordLink').href = group.link;
     } catch (error) {
-        console.error('Error loading Instagram features:', error);
-        // 保持 HTML 中的預設內容
+        console.error('Error loading study groups:', error);
     }
 }
 
-function displayInstagramFeatures(igData) {
-    // 更新標題
-    const sectionTitle = document.querySelector('.instagram-section .section-title');
-    if (sectionTitle && igData.title) {
-        sectionTitle.innerHTML = `<i class="fab fa-instagram"></i> ${igData.title}`;
-    }
-
-    // 更新副標題
-    const sectionSubtitle = document.querySelector('.instagram-section .section-subtitle');
-    if (sectionSubtitle && igData.subtitle) {
-        sectionSubtitle.textContent = igData.subtitle;
-    }
-
-    // 更新特色卡片
-    if (igData.features && igData.features.length > 0) {
-        const featuresContainer = document.querySelector('.instagram-features');
-        if (featuresContainer) {
-            featuresContainer.innerHTML = '';
-            igData.features.forEach(feature => {
-                const cardDiv = document.createElement('div');
-                cardDiv.className = 'instagram-feature-card';
-
-                let itemsHtml = '';
-                if (feature.items && feature.items.length > 0) {
-                    itemsHtml = feature.items.map(item =>
-                        `<li><i class="fas fa-check"></i> ${item}</li>`
-                    ).join('');
-                }
-
-                cardDiv.innerHTML = `
-                    <div class="instagram-icon">
-                        <i class="${feature.icon}"></i>
-                    </div>
-                    <h3>${feature.title}</h3>
-                    <ul>
-                        ${itemsHtml}
-                    </ul>
-                `;
-                featuresContainer.appendChild(cardDiv);
-            });
-        }
-    }
-
-    // 更新追蹤按鈕
-    if (igData.link && igData.account) {
-        const igButton = document.querySelector('.btn-instagram');
-        if (igButton) {
-            igButton.href = igData.link;
-            igButton.innerHTML = `<i class="fab fa-instagram"></i> 追蹤 @${igData.account}`;
-        }
+// 載入 Instagram 資料
+async function loadInstagram() {
+    try {
+        const data = await fetchJson('content/instagram-features.json');
+        if (data.title) document.getElementById('igTitle').textContent = data.title;
+        if (data.description) document.getElementById('igDescription').textContent = data.description;
+        const igLink = document.getElementById('igLink');
+        if (data.link) igLink.href = data.link;
+        if (data.account) igLink.innerHTML = `追蹤 @${data.account} <i class="fas fa-arrow-right"></i>`;
+    } catch (error) {
+        console.error('Error loading Instagram data:', error);
     }
 }
 
 // 載入網站資訊（全域設定）
 async function loadSiteInfo() {
     try {
-        const response = await fetch('content/settings/site-info.json');
-        const data = await response.json();
-        updateSiteInfo(data);
+        updateSiteInfo(await fetchJson('content/settings/site-info.json'));
     } catch (error) {
         console.error('Error loading site info:', error);
-        // 保持 HTML 中的預設內容
     }
 }
 
 function updateSiteInfo(siteInfo) {
-    // 更新頁面標題
+    const shortName = siteInfo.siteName ? siteInfo.siteName.replace(' 學習平台', '') : '';
+
     if (siteInfo.siteName && siteInfo.tagline) {
         document.title = `${siteInfo.siteName} - ${siteInfo.tagline}`;
     }
-
-    // 更新 meta 描述
     if (siteInfo.description) {
-        let metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc) {
-            metaDesc.setAttribute('content', siteInfo.description);
-        }
+        document.querySelector('meta[name="description"]')?.setAttribute('content', siteInfo.description);
     }
-
-    // 更新 meta 關鍵字
     if (siteInfo.keywords) {
-        let metaKeywords = document.querySelector('meta[name="keywords"]');
-        if (metaKeywords) {
-            metaKeywords.setAttribute('content', siteInfo.keywords);
-        }
+        document.querySelector('meta[name="keywords"]')?.setAttribute('content', siteInfo.keywords);
     }
-
-    // 更新導航欄網站名稱
-    const siteName = document.getElementById('siteName');
-    if (siteName && siteInfo.siteName) {
-        siteName.textContent = siteInfo.siteName.replace(' 學習平台', '');
+    if (shortName) {
+        document.getElementById('siteName').textContent = shortName;
+        document.getElementById('footerSiteName').textContent = shortName;
     }
-
-    // 更新 Footer 網站名稱
-    const footerSiteName = document.getElementById('footerSiteName');
-    if (footerSiteName && siteInfo.siteName) {
-        footerSiteName.textContent = siteInfo.siteName.replace(' 學習平台', '');
+    if (siteInfo.tagline) {
+        document.getElementById('footerTagline').textContent = siteInfo.tagline;
     }
-
-    // 更新 Footer 標語
-    const footerTagline = document.getElementById('footerTagline');
-    if (footerTagline && siteInfo.tagline) {
-        footerTagline.textContent = siteInfo.tagline;
+    if (siteInfo.copyrightYear && shortName) {
+        document.getElementById('copyrightText').innerHTML = `&copy; ${siteInfo.copyrightYear} ${shortName}. All rights reserved.`;
     }
-
-    // 更新版權文字
-    const copyrightText = document.getElementById('copyrightText');
-    if (copyrightText && siteInfo.copyrightYear && siteInfo.siteName) {
-        copyrightText.innerHTML = `&copy; ${siteInfo.copyrightYear} ${siteInfo.siteName.replace(' 學習平台', '')}. All rights reserved.`;
-    }
-
-    // 更新社交媒體連結
     if (siteInfo.social) {
-        const socialLinks = document.getElementById('footerSocialLinks');
-        if (socialLinks) {
-            let linksHTML = '';
-            if (siteInfo.social.instagram) {
-                linksHTML += `<a href="${siteInfo.social.instagram}" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>`;
-            }
-            if (siteInfo.social.facebook) {
-                linksHTML += `<a href="${siteInfo.social.facebook}" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>`;
-            }
-            if (siteInfo.social.twitter) {
-                linksHTML += `<a href="${siteInfo.social.twitter}" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>`;
-            }
-            if (linksHTML) {
-                socialLinks.innerHTML = linksHTML;
-            }
-        }
+        const icons = { instagram: 'fab fa-instagram', discord: 'fab fa-discord', facebook: 'fab fa-facebook', twitter: 'fab fa-twitter' };
+        const labels = { instagram: 'Instagram', discord: 'Discord', facebook: 'Facebook', twitter: 'Twitter' };
+        const linksHTML = Object.keys(icons)
+            .filter(key => siteInfo.social[key])
+            .map(key => `<a href="${siteInfo.social[key]}" target="_blank" rel="noopener" aria-label="${labels[key]}"><i class="${icons[key]}"></i></a>`)
+            .join('');
+        if (linksHTML) document.getElementById('footerSocialLinks').innerHTML = linksHTML;
     }
 }
 
-// 平滑滾動
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+// 動畫：GSAP 載入失敗時頁面照常顯示，只是沒有動畫
+function initMotion() {
+    if (!window.gsap || !window.ScrollTrigger) return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    const navbar = document.querySelector('.navbar');
+    ScrollTrigger.create({
+        start: 8,
+        onToggle: self => navbar.classList.toggle('is-scrolled', self.isActive)
+    });
+
+    const mm = gsap.matchMedia();
+
+    mm.add({
+        desktop: '(min-width: 961px)',
+        motion: '(prefers-reduced-motion: no-preference)'
+    }, context => {
+        const { desktop, motion } = context.conditions;
+        if (!motion) return;
+
+        // 首頁進場：文字依序出現，接著兩支手機升起
+        gsap.timeline({ defaults: { ease: 'power3.out' } })
+            .from('[data-hero]', { y: 28, opacity: 0, duration: 0.8, stagger: 0.09 })
+            .from('.phone--front', { yPercent: 18, opacity: 0, duration: 1.1 }, 0.25)
+            .from('.phone--back', { yPercent: 24, rotation: 0, opacity: 0, duration: 1.2 }, 0.4);
+
+        // 捲離首頁時兩支手機以不同速度上移，做出前後層次
+        // 進場用 yPercent、視差用 y，兩段動畫才不會互相覆蓋
+        gsap.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } })
+            .to('.phone--front', { y: -60, ease: 'none' }, 0)
+            .to('.phone--back', { y: -140, ease: 'none' }, 0);
+
+        // 區塊進入畫面時淡入
+        gsap.set('[data-reveal]', { y: 32, opacity: 0 });
+        ScrollTrigger.batch('[data-reveal]', {
+            start: 'top 85%',
+            once: true,
+            onEnter: batch => gsap.to(batch, { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: 'power3.out' })
+        });
+
+        if (desktop) {
+            return setupPinnedTour();
+        }
+
+        gsap.utils.toArray('.tour-step').forEach(step => {
+            gsap.from(step, {
+                y: 40,
+                opacity: 0,
+                duration: 0.8,
+                ease: 'power3.out',
+                scrollTrigger: { trigger: step, start: 'top 85%', once: true }
             });
+        });
+    });
+}
+
+// App 功能介紹：區塊釘住，捲動距離推動截圖一張張往上蓋
+function setupPinnedTour() {
+    const tour = document.querySelector('.tour');
+    const body = tour.querySelector('.tour-body');
+    const steps = gsap.utils.toArray('.tour-step', tour);
+    const screensWrap = document.getElementById('tourScreens');
+    if (steps.length < 2) return;
+
+    tour.classList.add('is-pinned');
+    screensWrap.innerHTML = '';
+    const screens = steps.map(step => {
+        const img = document.createElement('img');
+        img.src = step.querySelector('img').src;
+        img.alt = '';
+        screensWrap.appendChild(img);
+        return img;
+    });
+
+    const last = steps.length - 1;
+    const setActive = index => steps.forEach((step, i) => step.classList.toggle('is-active', i === index));
+    setActive(0);
+    gsap.set(screens.slice(1), { yPercent: 100 });
+
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: body,
+            start: 'center center',
+            end: () => `+=${window.innerHeight * 0.8 * last}`,
+            pin: true,
+            scrub: 0.6,
+            snap: { snapTo: 1 / last, inertia: false, duration: { min: 0.2, max: 0.5 }, ease: 'power1.inOut' },
+            invalidateOnRefresh: true,
+            onUpdate: self => setActive(Math.round(self.progress * last))
         }
     });
-});
 
-// 頁面載入時初始化
-document.addEventListener('DOMContentLoaded', () => {
-    loadSliderData();
-    loadTeamData();
+    for (let i = 1; i <= last; i++) {
+        tl.to(screens[i], { yPercent: 0, ease: 'none', duration: 1 }, i - 1)
+          .to(screens[i - 1], { scale: 0.9, opacity: 0.3, ease: 'none', duration: 1 }, i - 1);
+    }
+
+    // 視窗縮小到手機寬度時還原成一般排版
+    return () => {
+        tour.classList.remove('is-pinned');
+        steps.forEach(step => step.classList.remove('is-active'));
+        screensWrap.innerHTML = '';
+    };
+}
+
+// 頁面載入時初始化；功能介紹要等資料載入完成才能計算釘住範圍
+document.addEventListener('DOMContentLoaded', async () => {
     loadStudyGroups();
-    loadAppData();
-    loadInstagramFeatures();
+    loadInstagram();
     loadSiteInfo();
+    await loadAppData();
+    initMotion();
 });

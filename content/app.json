@@ -1,24 +1,31 @@
 {
   "title": "EZQuiz APP",
   "subtitle": "介面乾淨清爽，無壓力學習",
-  "image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800",
   "description": "EZQuiz APP 設計簡潔，每次只需完成 10 題，輕鬆無壓力。全科目皆提供詳細解析，幫助你徹底理解每一題。",
   "features": [
     {
-      "icon": "fas fa-list-ol",
-      "text": "快速刷題"
+      "title": "每題都有解析",
+      "text": "作答後馬上看解析，說明題目在考什麼、正解為什麼成立。",
+      "image": "images/app/explanation.webp",
+      "alt": "國文題目作答後顯示正解與解析的畫面"
     },
     {
-      "icon": "fas fa-book-open",
-      "text": "詳細解析"
+      "title": "題目下方就是計算紙",
+      "text": "數學題可以直接在題目下方手寫計算，擦掉、復原都在同一排按鈕。",
+      "image": "images/app/scratch.webp",
+      "alt": "數學題下方的手寫計算紙"
     },
     {
-      "icon": "fas fa-paint-brush",
-      "text": "介面清爽"
+      "title": "錯題依題型統計",
+      "text": "每科答錯的題目按題型分類，一眼看出哪一類最常錯，再到首頁的錯題複習重練。",
+      "image": "images/app/analysis.webp",
+      "alt": "國文與英文依題型統計錯題數的長條圖"
     },
     {
-      "icon": "fas fa-gift",
-      "text": "免費使用"
+      "title": "和同類群考生比進度",
+      "text": "答對 1 題得 1 分，全對再加 5 分，每月 1 日重新計算。不想上榜可以在設定裡關掉。",
+      "image": "images/app/ranking.webp",
+      "alt": "資電類本月排行榜"
     }
   ],
   "downloads": {

@@ -2,11 +2,8 @@
   "groups": [
     {
       "title": "Discord 語音共讀室",
-      "date": "全天開放",
-      "time": "隨時進出",
-      "location": "Discord 語音頻道",
-      "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600",
-      "description": "語音頻道一直開著，想讀書就進來，不用等時間也不用報名。可以開麥討論題目，也可以靜音各讀各的，有人一起比較坐得住。"
+      "description": "語音頻道一直開著，想讀書就進來，不用等時間也不用報名。可以開麥討論題目，也可以靜音各讀各的。",
+      "link": "https://discord.com/invite/ag7NzXTNBA"
     }
   ]
 }
